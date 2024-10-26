@@ -1,16 +1,15 @@
 const express = require('express');
 const router = express.Router();
-//customize this for this project
 const {
-    getAllTasks,
-    createTask,
-    getTask,
-    updateTask,
-    deleteTask,
+    getAllPets,
+    createPet,
+    getPet,
+    updatePet,
+    deletePet,
 } = require('../controller/pets');
 
-// router.route('/').get(getAllTasks).post(createTask);
-// router.route('/:id').get(getTask).patch(updateTask).delete(deleteTask);
-// router.route('/api/v1/tasks/:id').patch(updateTask);
+router.route('/').get(getAllPets).post(createPet);
+router.route('/:id').get(getPet).patch(updatePet).delete(deletePet);
+router.route('/api/v1/pets/:id').patch(updatePet);
 
 module.exports = router;

@@ -11,5 +11,6 @@ const TaskSchema = new mongoose.Schema({
         type:Boolean,
         default:false,
     },
-})
+    //get rid of once al working
+},{collection:"pets"})
 module.exports = mongoose.model('Pet', TaskSchema);
