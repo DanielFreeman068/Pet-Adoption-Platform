@@ -1,81 +1,48 @@
-const Pet = require("../models/Pet")
-
-const tasksDOM = document.querySelector('.tasks')
+const petsDOM = document.querySelector('.tasks')
 const loadingDOM = document.querySelector('.loading-text')
 const formDOM = document.querySelector('.task-form')
-const taskInputDOM = document.querySelector('.task-input')
+const petInputDOM = document.querySelector('.task-input')
 const formAlertDOM = document.querySelector('.form-alert')
 // Load tasks from /api/pets
-const showTasks = async () => {
+const showPets = async () => {
 loadingDOM.style.visibility = 'visible'
-// CHANGE ALL OF THIS TO PETS AND PET
 try {
     const {
-    data: { tasks },
+    data: { pets },
     } = await axios.get('/api/v1/pets')
-    if (tasks.length < 1) {
-    tasksDOM.innerHTML = '<h5 class="empty-list">No tasks in your list</h5>'
+    if (pets.length < 1) {
+    petsDOM.innerHTML = '<h5 class="empty-list">No Pets Available</h5>'
     loadingDOM.style.visibility = 'hidden'
     return
     }
-    const allTasks = tasks
-    .map((task) => {
-        const { completed, _id: taskID, name } = task
-        return `<div class="single-task ${completed && 'task-completed'}">
-<h5><span><i class="far fa-check-circle"></i></span>${name}</h5>
-<div class="task-links">
-
-
-
-<!-- edit link -->
-<a href="task.html?id=${taskID}"  class="edit-link">
-<i class="fas fa-edit"></i>
-</a>
-<!-- delete btn -->
-<button type="button" class="delete-btn" data-id="${taskID}">
-<i class="fas fa-trash"></i>
-</button>
-</div>
-</div>`
+    const allPets = pets
+    .map((pet) => {
+        const { _id: petID, name } = pet
+        return `<div class="single-task">
+        <h5>${name}</h5>
+        </div>`
     })
     .join('')
-    tasksDOM.innerHTML = allTasks
+    petsDOM.innerHTML = allPets
 } catch (error) {
-    tasksDOM.innerHTML =
-    '<h5 class="empty-list">There was an error, please try later....</h5>'
+    petsDOM.innerHTML =
+    '<h5 class="empty-list">There was an error, please try later...</h5>'
 }
 loadingDOM.style.visibility = 'hidden'
 }
 
-showTasks()
-
-// delete task /api/tasks/:id
-
-tasksDOM.addEventListener('click', async (e) => {
-const el = e.target
-if (el.parentElement.classList.contains('delete-btn')) {
-    loadingDOM.style.visibility = 'visible'
-    const id = el.parentElement.dataset.id
-    try {
-    await axios.delete(`/api/v1/tasks/${id}`)
-    showTasks()
-    } catch (error) {
-    console.log(error)
-    }
-}
-loadingDOM.style.visibility = 'hidden'
-})
+showPets()
 
 // form
 
 formDOM.addEventListener('submit', async (e) => {
 e.preventDefault()
-const name = taskInputDOM.value
+const name = petInputDOM.value
 
 try {
-    await axios.post('/api/v1/tasks', { name })
-    showTasks()
-    taskInputDOM.value = ''
+    await axios.post('/api/v1/pets', { name })
+    showPets()
+    petInputDOM.value = ''
     formAlertDOM.style.display = 'block'
     formAlertDOM.textContent = `success, task added`
     formAlertDOM.classList.add('text-success')

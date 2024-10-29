@@ -26,7 +26,7 @@ const deletePet = asyncWrapper( async (req,res,next) => {
     const {id:petID} = req.params
     const pet = await Pet.findOneAndDelete({_id:petID})
     if(!pet){
-        return next(createCustomerError('No Pet With Id ' + petID, 404))
+        return next(createCustomError('No Pet With Id ' + petID, 404))
     }
     res.status(200).json({pet})//responds with the Pet that was deleted
 })

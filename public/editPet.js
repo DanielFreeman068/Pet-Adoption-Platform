@@ -8,14 +8,14 @@ const params = window.location.search
 const id = new URLSearchParams(params).get('id')
 let tempName
 
-const showTask = async () => {
+const showPet = async () => {
 try {
     const {
-    data: { task },
-    } = await axios.get(`/api/v1/tasks/${id}`)
-    const { _id: taskID, completed, name } = task
+    data: { pet },
+    } = await axios.get(`/api/v1/pets/${id}`)
+    const { _id: petID, completed, name } = pet
 
-    taskIDDOM.textContent = taskID
+    taskIDDOM.textContent = petID
     taskNameDOM.value = name
     tempName = name
     if (completed) {
@@ -26,32 +26,27 @@ try {
 }
 }
 
-showTask()
+showPet()
 
 editFormDOM.addEventListener('submit', async (e) => {
 editBtnDOM.textContent = 'Loading...'
 e.preventDefault()
 try {
     const taskName = taskNameDOM.value
-    const taskCompleted = taskCompletedDOM.checked
 
     const {
-    data: { task },
-    } = await axios.patch(`/api/v1/tasks/${id}`, {
+    data: { pet },
+    } = await axios.patch(`/api/v1/pets/${id}`, {
     name: taskName,
-    completed: taskCompleted,
     })
 
-    const { _id: taskID, completed, name } = task
+    const { _id: petID, name } = pet
 
-    taskIDDOM.textContent = taskID
+    taskIDDOM.textContent = petID
     taskNameDOM.value = name
     tempName = name
-    if (completed) {
-    taskCompletedDOM.checked = true
-    }
     formAlertDOM.style.display = 'block'
-    formAlertDOM.textContent = `success, edited task`
+    formAlertDOM.textContent = `success, edited pet`
     formAlertDOM.classList.add('text-success')
 } catch (error) {
     console.error(error)
