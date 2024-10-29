@@ -8,7 +8,7 @@
     "dev": "nodemon app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Oliver Kuopus, Daniel Freeman",
   "license": "MIT",
   "devDependencies": {
     "nodemon": "^3.1.7"
