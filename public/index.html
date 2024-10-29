@@ -17,18 +17,24 @@
     <title>Pet Adoption Platform || Home</title>
 </head>
     <body>
-        <form class="task-form">
+        <header>Dashboard</header>
+        <section class="pets-container">
+            <p class="loading-text">Loading...</p>
+            <div class="pets"></div>
+            </section>
+        <form class="pet-form">
             <h4>Add Pets</h4>
             <div class="form-control">
-                <input type="text"name="name"class="task-input"placeholder="e.g. some dog ion know"/>
+                <input type="text"name="name"class="pet-input"placeholder="e.g. some dog ion know"/>
+                <input type="text"name="animal"class="pet-input"placeholder="dog, bird, cat, etc..."/>
+                <!-- <select name="gender" id="pet-input" value="male" class="pet-input">
+                    <option name="gender" value="male">male</option>
+                    <option name="gender" value="female">female</option>
+                </select> -->
                 <button type="submit" class="btn submit-btn">submit</button>
             </div>
             <div class="form-alert"></div>
         </form>
-        <section class="tasks-container">
-        <p class="loading-text">Loading...</p>
-        <div class="tasks"></div>
-        </section>
         <!-- axios -->
         <script
         src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"

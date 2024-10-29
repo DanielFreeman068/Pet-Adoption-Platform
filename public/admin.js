@@ -12,25 +12,22 @@ try {
     loadingDOM.style.visibility = 'hidden'
     return
     }
-    const allPets = pets
-    .map((pet) => {
+    const allPets = pets.map((pet) => {
         const { _id: petID, name } = pet
-        return `<div class="single-task">
+        return `<div class="single-pet">
         <h5>${name}</h5>
-        <div class="task-links">
-            <!-- delete btn -->
+        <div class="pet-links">
             <button type="button" class="delete-btn" data-id="${petID}">
             <i class="fas fa-trash"></i>
             </button>
         </div>
     </div>`
-    })
-    .join('')
+    }).join('')
     petsDOM.innerHTML = allPets
-} catch (error) {
-    petsDOM.innerHTML =
-    '<h5 class="empty-list">There was an error, please try later....</h5>'
-}
+    } catch (error) {
+        petsDOM.innerHTML =
+        '<h5 class="empty-list">There was an error</h5>'
+    }
 loadingDOM.style.visibility = 'hidden'
 }
 

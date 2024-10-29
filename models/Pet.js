@@ -1,12 +1,18 @@
 const mongoose = require('mongoose');
-//customize this to be for the pet project
 const TaskSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, 'Must Provide A Name'],
+        required: true,
         trim: true,
-        maxLength: [25, "Name Can't Be More Than 25 Characters"]
+        maxLength: 20
     },
-    //get rid of once al working
+    animal: {
+        type: String,
+        required: true,
+    },
+    // gender: {
+    //     type: String,
+    //     required: true,
+    // },
 },{collection:"pets"})
 module.exports = mongoose.model('Pet', TaskSchema);

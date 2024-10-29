@@ -26,6 +26,11 @@ font-weight: 400;
 line-height: 1.75;
 }
 
+header{
+    font-size: 3rem;
+    text-align: center;
+}
+
 p {
 margin-bottom: 1.5rem;
 max-width: 40em;
@@ -35,7 +40,8 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+header {
 margin: 0;
 margin-bottom: 1.38rem;
 font-family: var(--headingFont);
@@ -45,19 +51,19 @@ text-transform: capitalize;
 }
 
 h1 {
-font-size: 3.052rem;
+font-size: 3rem;
 }
 
 h2 {
-font-size: 2.441rem;
+font-size: 2.5rem;
 }
 
 h3 {
-font-size: 1.953rem;
+font-size: 2rem;
 }
 
 h4 {
-font-size: 1.563rem;
+font-size: 1.5rem;
 }
 
 h5 {
@@ -73,7 +79,6 @@ text-decoration: none;
 }
 
 /* button styling */
-
 .btn {
 cursor: pointer;
 appearance: none;
@@ -82,20 +87,11 @@ border: none;
 padding: 0.375rem 0.75rem;
 text-transform: capitalize;
 }
-
-/*************
-    FORM 
-*************/
+/* form styling */
 form {
 width: 100%;
 padding: 2rem 2.5rem;
 }
-label {
-display: block;
-margin-bottom: 0.5rem;
-text-transform: capitalize;
-}
-
 input,
 textarea {
 width: 100%;
@@ -105,24 +101,18 @@ padding: 0.375rem 0.75rem;
 .form-row {
 margin-bottom: 1rem;
 }
-textarea {
-width: 100%;
-height: 7rem;
-}
 .form-alert {
 text-transform: capitalize;
 }
-
-.task-form,
-.single-task-form {
-width: 90vw;
+.pet-form{
+width: 50vw;
 margin: 0 auto;
 margin-top: 6rem;
 }
-.task-form h4 {
+.pet-form h4 {
 text-align: center;
 }
-.task-form .form-alert {
+.pet-form .form-alert {
 margin-top: 1rem;
 }
 .submit-btn {
@@ -133,7 +123,7 @@ margin-top: 1rem;
 .form-control {
     display: flex;
 }
-.task-input {
+.pet-input {
     border-radius: 0;
 }
 .submit-btn {
@@ -165,95 +155,41 @@ color: green;
 .empty-list {
 text-align: center;
 }
-.tasks-container {
+.pets-container {
 width: 100%;
 width: 90vw;
 margin: 0 auto;
 margin-top: 2rem;
 padding-bottom: 4rem;
 }
-.tasks {
+.pets {
 display: grid;
 gap: 1rem;
 }
-.single-task {
+.single-pet {
 padding: 1rem 2.5rem;
 display: flex;
 justify-content: space-between;
 align-items: center;
 }
-.single-task h5 {
+.single-pet h5 {
 margin-bottom: 0;
-}
-.single-task span {
-display: inline-block;
-width: 0.5rem;
-height: 0.5rem;
-margin-left: -1.25rem;
-margin-right: 1.5rem;
-}
-.single-task .fa-check-circle {
-font-size: 1rem;
-visibility: hidden;
 }
 .loading-text {
 visibility: hidden;
 }
 /* Task Links */
-.task-links {
+.pet-links {
 display: flex;
 align-items: center;
 gap: 0 0.5rem;
 }
-.delete-btn,
-.edit-link {
+.delete-btn{
 background: transparent;
 font-size: 0.75rem;
 border: transparent;
 cursor: pointer;
 }
-.edit-link {
-color: green;
-}
 .delete-btn {
 color:red;
-}
-
-/* edit task styling */
-
-.single-task-form h4 {
-text-align: center;
-}
-
-.single-task-form p {
-margin-bottom: 0;
-margin-top: 0;
-}
-.single-task-form .form-control {
-display: grid;
-grid-template-columns: 150px 1fr;
-align-items: center;
-justify-items: start;
-gap: 0 1rem;
-margin-bottom: 0.75rem;
-}
-
-.single-task-form label {
-margin-bottom: 0;
-font-size: 1rem;
-}
-.back-link {
-display: block;
-width: 250px;
-margin: 0 auto;
-text-align: center;
-margin-top: 6rem;
-}
-.back-link:hover {
-opacity: 0.75;
-}
-
-.single-task-form .form-alert {
-text-align: center;
-margin-top: 1rem;
 }

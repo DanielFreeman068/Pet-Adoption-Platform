@@ -9,7 +9,7 @@ const getAllPets = asyncWrapper(async (req,res)=> {
 
 const createPet = asyncWrapper(async (req, res) => {
     const pet = Pet.create(req.body)
-    console.log(req.body) //to check what is being made for dev only...
+    console.log(req.body)
     res.status(201).json({pet});
 })
 
