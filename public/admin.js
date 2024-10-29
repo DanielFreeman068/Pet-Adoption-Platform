@@ -13,9 +13,10 @@ try {
     return
     }
     const allPets = pets.map((pet) => {
-        const { _id: petID, name } = pet
+        const { _id: petID, name, animal } = pet
         return `<div class="single-pet">
         <h5>${name}</h5>
+        <h5>${animal}</h5>
         <div class="pet-links">
             <button type="button" class="delete-btn" data-id="${petID}">
             <i class="fas fa-trash"></i>
