@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400|Inconsolata:400");
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+:root {
+  /* CSS HSL */
+  --honey: #f6d110;
+  --butter: #fff9c7;
+  --sky: #e6f2f4;
+  --bluee: #81ceeb;
+  /* fonts */
+  --headingFont: "Inconsolata", monospace;
+  --bodyFont: "Montserrat", sans-serif;
+  --smallText: 0.7em;
+}
+
+body {
+  margin: 0;
+  background-color: var(--sky);
+  font-family: var(--headingFont);
+}
+body div {
+  width: 4vw;
+  height: 4vh;
+  margin: auto;
+  height: 12vh;
+  background-color: var(--honey);
+}
+body .container {
+  width: 40vw;
+  height: 40vw;
+}/*# sourceMappingURL=login.css.map */

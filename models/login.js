@@ -6,13 +6,15 @@ const loginSchema = new mongoose.Schema({
         required: true,
         unique: true,
         minlength: [3, "Atleast 3 charachters."],
-        maxlength: [20, "No more than 20 charachters."]
+        maxlength: [20, "No more than 20 charachters."],
+        required: true
     },
     password: {
         type: String,
         required: true,
         minlength: [6, "Atleast 6 charachters."],
-        maxlength: [16, "No more than 16 charachters."]
+        maxlength: [12, "No more than 12 charachters."],
+        required: true
     }
 })
 
