@@ -25,12 +25,13 @@
         <form class="pet-form">
             <h4>Add Pets</h4>
             <div class="form-control">
-                <input type="text"name="name"class="pet-input"placeholder="e.g. some dog ion know"/>
-                <input type="text"name="animal"class="pet-input" id="animal" placeholder="dog, bird, cat, etc..."/>
-                <!-- <select name="gender" id="pet-input" value="male" class="pet-input">
-                    <option name="gender" value="male">male</option>
-                    <option name="gender" value="female">female</option>
-                </select> -->
+                <input type="text"name="name" id="pet-input" class="pet-input"placeholder="Name of Pet" required/>
+                <input type="text"name="breed" id="breed-input" class="pet-input" id="animal" placeholder="Breed of Pet" required/>
+                <select name="gender" id="gender-input" class="pet-input" required>
+                    <option value="" disabled selected hidden>Choose a Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
                 <button type="submit" class="btn submit-btn">submit</button>
             </div>
             <div class="form-alert"></div>
