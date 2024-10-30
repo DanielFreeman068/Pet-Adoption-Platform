@@ -14,6 +14,10 @@ const PetSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    age: {
+        type: Number,
+        required: true,
+    }
 },{collection:"pets"})
 
 module.exports = mongoose.model('Pet', PetSchema);

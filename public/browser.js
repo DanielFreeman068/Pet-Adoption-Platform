@@ -4,6 +4,7 @@ const formDOM = document.querySelector('.pet-form')
 const petInputDOM = document.getElementById('pet-input')
 const breedInputDOM = document.getElementById('breed-input')
 const genderInputDOM = document.getElementById('gender-input')
+const ageInputDOM = document.getElementById('age-input')
 const formAlertDOM = document.querySelector('form-alert')
 // Load pets from /api/pets
 const showPets = async () => {
@@ -16,11 +17,12 @@ const showPets = async () => {
         return
         }
         const allPets = pets.map((pet) => {
-            const { _id: petID, name, breed, gender } = pet
+            const { _id: petID, name, breed, gender, age } = pet
             return `<div class="single-pet">
             <h5>${name}</h5>
             <h5>${breed}</h5>
             <h5>${gender}</h5>
+            <h5>${age}</h5>
             </div>`
         }).join('')
         petsDOM.innerHTML = allPets
@@ -39,13 +41,15 @@ e.preventDefault()
 const name = petInputDOM.value
 const breed = breedInputDOM.value
 const gender = genderInputDOM.value
+const age = ageInputDOM.value
 
 try {
-    await axios.post('/api/v1/pets', { name , breed, gender})
+    await axios.post('/api/v1/pets', { name , breed, gender, age})
     showPets()
     petInputDOM.value = ''
     breedInputDOM.value = ''
     genderInputDOM.value = ''
+    ageInputDOM.value = ''
     formAlertDOM.style.display = 'block'
     formAlertDOM.textContent = `successfully added pet`
     formAlertDOM.classList.add('text-success')
