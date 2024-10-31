@@ -80,34 +80,40 @@ text-decoration: none;
 
 /* button styling */
 .btn {
-cursor: pointer;
-appearance: none;
-background-color:var(--bluee);
-border: none;
-padding: 0.375rem 0.75rem;
-text-transform: capitalize;
+    cursor: pointer;
+    appearance: none;
+    background-color:var(--bluee);
+    border: none;
+    padding: 0.375rem 0.75rem;
+    text-transform: capitalize;
+    margin:0 auto;
 }
 /* form styling */
 form {
-width: 100%;
-padding: 2rem 2.5rem;
+    width: 100%;
+    padding: 2rem 2.5rem;
 }
 input,
+textarea,
+select {
+    width: 25vw;
+    padding: 0.375rem 0.75rem;
+    margin:0 auto;
+    /* border-color: transparent; */
+}
 textarea {
-width: 100%;
-padding: 0.375rem 0.75rem;
-/* border-color: transparent; */
+    resize: none;
 }
 .form-row {
-margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 .form-alert {
-text-transform: capitalize;
+    text-transform: capitalize;
 }
 .pet-form{
-width: 50vw;
-margin: 0 auto;
-margin-top: 6rem;
+    width: 50vw;
+    margin: 0 auto;
+    margin-top: 6rem;
 }
 .pet-form h4 {
 text-align: center;
@@ -117,11 +123,12 @@ margin-top: 1rem;
 }
 .submit-btn {
 width: 100%;
-margin-top: 1rem;
+margin-top: 3rem;
 }
 @media screen and (min-width: 576px) {
 .form-control {
     display: flex;
+    flex-direction: column;
 }
 .pet-input {
     border-radius: 0;
@@ -156,21 +163,22 @@ color: green;
 text-align: center;
 }
 .pets-container {
-width: 100%;
-width: 90vw;
-margin: 0 auto;
-margin-top: 2rem;
-padding-bottom: 4rem;
+    width: 100%;
+    width: 90vw;
+    margin: 0 auto;
+    margin-top: 2rem;
+    padding-bottom: 4rem;
 }
 .pets {
-display: grid;
-gap: 1rem;
+    display: grid;
+    gap: 1rem;
 }
 .single-pet {
-padding: 1rem 2.5rem;
-display: flex;
-justify-content: space-between;
-align-items: center;
+    padding: 1rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
 }
 .single-pet h5 {
 margin-bottom: 0;

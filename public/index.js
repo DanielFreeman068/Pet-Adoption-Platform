@@ -5,6 +5,9 @@ const petInputDOM = document.getElementById('pet-input')
 const breedInputDOM = document.getElementById('breed-input')
 const genderInputDOM = document.getElementById('gender-input')
 const ageInputDOM = document.getElementById('age-input')
+const descInputDOM = document.getElementById('description-input')
+const behaviorInputDOM = document.getElementById('behavior-input')
+const historyInputDOM = document.getElementById('history-input')
 const formAlertDOM = document.querySelector('form-alert')
 // Load pets from /api/pets
 const showPets = async () => {
@@ -17,12 +20,15 @@ const showPets = async () => {
         return
         }
         const allPets = pets.map((pet) => {
-            const { _id: petID, name, breed, gender, age } = pet
+            const { _id: petID, name, breed, gender, age, description, behavior, history } = pet
             return `<div class="single-pet">
             <h5>${name}</h5>
             <h5>${breed}</h5>
             <h5>${gender}</h5>
             <h5>${age}</h5>
+            <h5>${description}</h5>
+            <h5>${behavior}</h5>
+            <h5>${history}</h5>
             </div>`
         }).join('')
         petsDOM.innerHTML = allPets
@@ -42,14 +48,15 @@ const name = petInputDOM.value
 const breed = breedInputDOM.value
 const gender = genderInputDOM.value
 const age = ageInputDOM.value
+const description = descInputDOM.value
+const behavior = behaviorInputDOM.value
+const history = historyInputDOM.value
 
 try {
-    await axios.post('/api/v1/pets', { name , breed, gender, age})
+    await axios.post('/api/v1/pets', { name , breed, gender, age, description, behavior, history})
     showPets()
-    petInputDOM.value = ''
-    breedInputDOM.value = ''
-    genderInputDOM.value = ''
-    ageInputDOM.value = ''
+    petInputDOM.value, breedInputDOM.value, genderInputDOM.value, ageInputDOM.value, descInputDOM.value, behaviorInputDOM.value, historyInputDOM = ''
+
     formAlertDOM.style.display = 'block'
     formAlertDOM.textContent = `successfully added pet`
     formAlertDOM.classList.add('text-success')
