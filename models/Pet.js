@@ -17,6 +17,18 @@ const PetSchema = new mongoose.Schema({
     age: {
         type: Number,
         required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    behavior: {
+        type: String,
+        required: true,
+    },
+    history: {
+        type: String,
+        required: true,
     }
 },{collection:"pets"})
 
