@@ -8,7 +8,7 @@ const port = process.env.PORT || 5500;
 
 //Local middleware
 const errorHandlerMiddleware = require('./middleware/error-handler');
-const { getAllPets } = require('./controller/pets');
+const { getAllPets, createPet } = require('./controller/pets');
 
 //libraires
 app.set('view engine', 'ejs');
@@ -21,13 +21,23 @@ app.use('/pets', pets);
 app.use(errorHandlerMiddleware);
 
 app.get('/', (req,res) => {
-    const pets = getAllPets();
-    res.render('index', { pets } );
+    const allPets = getAllPets();
+    console.log(allPets)
+    let arr2 = Object.keys(allPets).map(key => ({key, ...obj[key]}))
+    console.log(typeof arr2)
+    console.log(arr2)
+    res.render('index', { allPets },{async: true} );
 });
 
+app.post('/pets', (req,res) => {
+    createPet();
+    res.redirect('/');
+})
+
 app.get('/admin', (req,res) => {
-    const pets = getAllPets();
-    res.render('admin', { pets } );
+    const allPets = getAllPets();
+    const petsArray = Object.values(allPets);
+    res.render('admin', { petsArray } );
 });
 
 //initiate server

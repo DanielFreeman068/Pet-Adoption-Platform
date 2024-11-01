@@ -13,11 +13,11 @@
 <body>
     <header>Dashboard</header>
     <section class="pets-container">
-        <% if (!pets || !Array.isArray(pets) || pets.length === 0) { %>
+        <% if (!allPets || allPets.length === 0) { %>
             <h5 class="empty-list">No Pets Available</h5>
         <% } else { %>
             <div class="pets">
-                <% pets.forEach(function(pet) { %>
+                <% for(let pet = 0; i < allPets.length; i++) { %>
                     <div class="single-pet">
                         <h5><%= pet.name %></h5>
                         <h5><%= pet.breed %></h5>
@@ -48,7 +48,8 @@
             <textarea id="history-input" name="history" rows="4" cols="50" maxlength="100" placeholder="Pet History Description"></textarea>
             <button type="submit" class="btn submit-btn">Submit</button>
         </div>
-        <% if (locals.messages && messages.error) { %>
+        <div class="form-alert"></div>
+        <!-- <% if (locals.messages && messages.error) { %>
             <div class="form-alert text-error">
                 <%= messages.error %>
             </div>
@@ -57,9 +58,10 @@
             <div class="form-alert text-success">
                 <%= messages.success %>
             </div>
-        <% } %>
+        <% } %> -->
     </form>
-    <script>
+    <script src="../public/index.js"></script>
+    <!-- <script>
         const alerts = document.querySelectorAll('.form-alert');
         alerts.forEach(alert => {
             setTimeout(() => {
@@ -67,6 +69,6 @@
                 alert.classList.remove('text-success', 'text-error');
             }, 3000);
         });
-    </script>
+    </script> -->
 </body>
 </html>
