@@ -4,6 +4,7 @@ const {createCustomError} = require('../errors/custom-error');
 
 const getAllPets = asyncWrapper(async (req,res)=> {
     const pets = await Pet.find({});
+    console.log(pets)
     res.status(200).json({pets});
 });
 

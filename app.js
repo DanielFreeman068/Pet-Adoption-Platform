@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const path = require('path');
+// const path = require('path');
 const bodyParser = require('body-parser')
 const pets = require('./routes/pets');
 const connectDB = require('./db/connect');
@@ -17,7 +17,7 @@ app.use(express.static('./public'));
 app.use(express.json());
 
 //routes
-app.use('/api/v1/pets', pets);
+app.use('/pets', pets);
 app.use(errorHandlerMiddleware);
 
 app.get('/', (req,res) => {

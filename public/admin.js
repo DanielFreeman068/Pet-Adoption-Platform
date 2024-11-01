@@ -6,7 +6,7 @@ loadingDOM.style.visibility = 'visible'
 try {
     const {
     data: { pets },
-    } = await axios.get('/api/v1/pets')
+    } = await axios.get('/pets')
     if (pets.length < 1) {
     petsDOM.innerHTML = '<h5 class="empty-list">No Pets Available</h5>'
     loadingDOM.style.visibility = 'hidden'

@@ -13,7 +13,7 @@ const formAlertDOM = document.querySelector('form-alert')
 const showPets = async () => {
     loadingDOM.style.visibility = 'visible'
     try {
-        const {data: { pets }} = await axios.get('/api/v1/pets')
+        const {data: { pets }} = await axios.get('/pets')
         if (pets.length < 1) {
         petsDOM.innerHTML = '<h5 class="empty-list">No Pets Available</h5>'
         loadingDOM.style.visibility = 'hidden'
@@ -53,7 +53,7 @@ const behavior = behaviorInputDOM.value
 const history = historyInputDOM.value
 
 try {
-    await axios.post('/api/v1/pets', { name , breed, gender, age, description, behavior, history})
+    await axios.post('/pets', { name , breed, gender, age, description, behavior, history})
     showPets()
     petInputDOM.value, breedInputDOM.value, genderInputDOM.value, ageInputDOM.value, descInputDOM.value, behaviorInputDOM.value, historyInputDOM = ''
 

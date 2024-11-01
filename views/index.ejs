@@ -4,48 +4,69 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- favicon -->
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
-    <!-- FIND A FAVICON -->
-    <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
-    <!-- normalize css -->
-    <link rel="stylesheet" href="./normalize.css" />
-    <!-- main css -->
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="/normalize.css" />
+    <link rel="stylesheet" href="/styles.css" />
     <title>Pet Adoption Platform || Home</title>
 </head>
-    <body>
-        <header>Dashboard</header>
-        <section class="pets-container">
-            <p class="loading-text">Loading...</p>
-            <div class="pets"></div>
-        </section>
-        <form class="pet-form">
-            <h4>Add Pets</h4>
-            <div class="form-control">
-                <input type="text"name="name" id="pet-input" class="pet-input"placeholder="Name of Pet" required/>
-                <input type="text"name="breed" id="breed-input" class="pet-input" id="animal" placeholder="Breed of Pet" required/>
-                <select name="gender" id="gender-input" class="pet-input" required>
-                    <option value="" disabled selected hidden>Choose a Gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
-                <input type="number" name="age" id="age-input" class="pet-input" placeholder="Age of Pet" required>
-                <textarea id="description-input" name="description" rows="4" cols="50" maxlength="100" placeholder="Pet Description"></textarea>
-                <textarea id="behavior-input" name="description" rows="4" cols="50" maxlength="100" placeholder="Pet Behavior Description"></textarea>
-                <textarea id="history-input" name="history" rows="4" cols="50" maxlength="100" placeholder="Pet History Description"></textarea>
-                <button type="submit" class="btn submit-btn">submit</button>
+<body>
+    <header>Dashboard</header>
+    <section class="pets-container">
+        <% if (!pets || !Array.isArray(pets) || pets.length === 0) { %>
+            <h5 class="empty-list">No Pets Available</h5>
+        <% } else { %>
+            <div class="pets">
+                <% pets.forEach(function(pet) { %>
+                    <div class="single-pet">
+                        <h5><%= pet.name %></h5>
+                        <h5><%= pet.breed %></h5>
+                        <h5><%= pet.gender %></h5>
+                        <h5><%= pet.age %></h5>
+                        <h5><%= pet.description %></h5>
+                        <h5><%= pet.behavior %></h5>
+                        <h5><%= pet.history %></h5>
+                    </div>
+                <% }); %>
             </div>
-            <div class="form-alert"></div>
-        </form>
-        <!-- axios -->
-        <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
-        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
-        ></script>
-        <script src="./index.js"></script>
-    </body>
+        <% } %>
+    </section>
+
+    <form class="pet-form" action="/pets" method="POST">
+        <h4>Add Pets</h4>
+        <div class="form-control">
+            <input type="text" name="name" id="pet-input" class="pet-input" placeholder="Name of Pet" required />
+            <input type="text" name="breed" id="breed-input" class="pet-input" placeholder="Breed of Pet" required />
+            <select name="gender" id="gender-input" class="pet-input" required>
+                <option value="" disabled selected hidden>Choose a Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <input type="number" name="age" id="age-input" class="pet-input" placeholder="Age of Pet" required />
+            <textarea id="description-input" name="description" rows="4" cols="50" maxlength="100" placeholder="Pet Description"></textarea>
+            <textarea id="behavior-input" name="behavior" rows="4" cols="50" maxlength="100" placeholder="Pet Behavior Description"></textarea>
+            <textarea id="history-input" name="history" rows="4" cols="50" maxlength="100" placeholder="Pet History Description"></textarea>
+            <button type="submit" class="btn submit-btn">Submit</button>
+        </div>
+        <% if (locals.messages && messages.error) { %>
+            <div class="form-alert text-error">
+                <%= messages.error %>
+            </div>
+        <% } %>
+        <% if (locals.messages && messages.success) { %>
+            <div class="form-alert text-success">
+                <%= messages.success %>
+            </div>
+        <% } %>
+    </form>
+    <script>
+        const alerts = document.querySelectorAll('.form-alert');
+        alerts.forEach(alert => {
+            setTimeout(() => {
+                alert.style.display = 'none';
+                alert.classList.remove('text-success', 'text-error');
+            }, 3000);
+        });
+    </script>
+</body>
 </html>
