@@ -1,5 +1,5 @@
-const petsDOM = document.querySelector('.pets')
-const loadingDOM = document.querySelector('.loading-text')
+// const petsDOM = document.querySelector('.pets')
+// const loadingDOM = document.querySelector('.loading-text')
 const formDOM = document.querySelector('.pet-form')
 const petInputDOM = document.getElementById('pet-input')
 const breedInputDOM = document.getElementById('breed-input')
@@ -44,18 +44,18 @@ const formAlertDOM = document.querySelector('form-alert')
 
 formDOM.addEventListener('submit', async (e) => {
 e.preventDefault()
-const name = petInputDOM.value
-const breed = breedInputDOM.value
-const gender = genderInputDOM.value
-const age = ageInputDOM.value
-const description = descInputDOM.value
-const behavior = behaviorInputDOM.value
-const history = historyInputDOM.value
+// const name = petInputDOM.value
+// const breed = breedInputDOM.value
+// const gender = genderInputDOM.value
+// const age = ageInputDOM.value
+// const description = descInputDOM.value
+// const behavior = behaviorInputDOM.value
+// const history = historyInputDOM.value
 
 try {
-    await axios.post('/pets', { name , breed, gender, age, description, behavior, history})
+    // await axios.post('/pets', { name , breed, gender, age, description, behavior, history})
     // showPets()
-    petInputDOM.value, breedInputDOM.value, genderInputDOM.value, ageInputDOM.value, descInputDOM.value, behaviorInputDOM.value, historyInputDOM = ''
+    // petInputDOM.value, breedInputDOM.value, genderInputDOM.value, ageInputDOM.value, descInputDOM.value, behaviorInputDOM.value, historyInputDOM = ''
 
     formAlertDOM.style.display = 'block'
     formAlertDOM.textContent = `successfully added pet`

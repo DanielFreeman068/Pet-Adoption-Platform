@@ -19,8 +19,33 @@
     <body>
         <header>Admin Page</header>
         <section class="tasks-container">
-        <p class="loading-text">Loading...</p>
-        <div class="tasks"></div>
+        <div class="pets">
+            <% if (!allPets || allPets.length === 0) { %>
+                <h5 class="empty-list">No Pets Available</h5>
+            <% } else { %>
+                <div class="pets">
+                    <% allPets.forEach(function(pet) { %>
+                        <div class="single-pet">
+                            <h5><%= pet.id %></h5>
+                            <h5><%= pet.name %></h5>
+                            <h5><%= pet.breed %></h5>
+                            <h5><%= pet.gender %></h5>
+                            <h5><%= pet.age %></h5>
+                            <h5><%= pet.description %></h5>
+                            <h5><%= pet.behavior %></h5>
+                            <h5><%= pet.history %></h5>
+                            <form action="/pets/<%= pet.id %>/delete" method="POST">
+                                <div class="pet-links">
+                                    <button type="submit" class="delete-btn">
+                                    <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    <% }); %>
+                </div>
+            <% } %>
+        </div>
         </section>
         <!-- axios -->
         <script
@@ -29,6 +54,6 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
         ></script>
-        <script src="./admin.js"></script>
+        <!-- <script src="./admin.js"></script> -->
     </body>
 </html>

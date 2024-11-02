@@ -1,14 +1,17 @@
 const express = require('express');
 const app = express();
+
 // const path = require('path');
 const bodyParser = require('body-parser')
 const pets = require('./routes/pets');
 const connectDB = require('./db/connect');
 const port = process.env.PORT || 5500;
+const Pet = require('./models/Pet');
 
 //Local middleware
 const errorHandlerMiddleware = require('./middleware/error-handler');
-const { getAllPets, createPet } = require('./controller/pets');
+// const { getAllPets, createPet } = require('./controller/pets');
+const { deletePet } = require('./controller/pets')
 
 //libraires
 app.set('view engine', 'ejs');
@@ -17,28 +20,42 @@ app.use(express.static('./public'));
 app.use(express.json());
 
 //routes
-app.use('/pets', pets);
+// app.use('/pets', pets);
 app.use(errorHandlerMiddleware);
 
-app.get('/', (req,res) => {
-    const allPets = getAllPets();
-    console.log(allPets)
-    let arr2 = Object.keys(allPets).map(key => ({key, ...obj[key]}))
-    console.log(typeof arr2)
-    console.log(arr2)
-    res.render('index', { allPets },{async: true} );
+app.get('/', async (req, res) => {
+    try {
+        const allPets = await Pet.find({});  
+        res.render('index', { allPets });
+    } catch (error) {
+        console.error("Error fetching pets", error);
+        res.render('index', { allPets: [] });
+    }
 });
 
-app.post('/pets', (req,res) => {
-    createPet();
-    res.redirect('/');
+app.post('/pets', async (req,res) => {
+    // createPet();
+    Pet.create(req.body)
+    const allPets = await Pet.find({});  
+    res.render('index', { allPets })
 })
 
-app.get('/admin', (req,res) => {
-    const allPets = getAllPets();
-    const petsArray = Object.values(allPets);
-    res.render('admin', { petsArray } );
+app.get('/admin', async (req,res) => {
+    try {
+        const allPets = await Pet.find({});  
+        res.render('admin', { allPets });
+    } catch (error) {
+        console.error("Error fetching pets", error);
+        res.render('admin', { allPets: [] });
+    }
 });
+
+app.post('/pets/:id/delete', async(req,res) => {
+    const {id:petID} = req.params
+    await Pet.findOneAndDelete({_id:petID})
+    const allPets = await Pet.find({})
+    res.redirect('/admin')
+})
 
 //initiate server
 const serverInit = async () => {

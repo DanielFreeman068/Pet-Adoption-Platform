@@ -146,7 +146,7 @@ form > :last-child {
 margin-bottom: 0;
 }
 /* alerts and text styling */
-.alert {
+/* .alert {
 padding: 0.375rem 0.75rem;
 margin-bottom: 1rem;
 border-color: transparent;
@@ -156,7 +156,7 @@ color: red;
 }
 .text-success {
 color: green;
-}
+} */
 
 /* pet styling */
 .empty-list {
@@ -183,9 +183,9 @@ text-align: center;
 .single-pet h5 {
 margin-bottom: 0;
 }
-.loading-text {
+/* .loading-text {
 visibility: hidden;
-}
+} */
 /* Task Links */
 .pet-links {
 display: flex;

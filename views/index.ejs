@@ -17,7 +17,7 @@
             <h5 class="empty-list">No Pets Available</h5>
         <% } else { %>
             <div class="pets">
-                <% for(let pet = 0; i < allPets.length; i++) { %>
+                <% allPets.forEach(function(pet) { %>
                     <div class="single-pet">
                         <h5><%= pet.name %></h5>
                         <h5><%= pet.breed %></h5>
@@ -48,7 +48,7 @@
             <textarea id="history-input" name="history" rows="4" cols="50" maxlength="100" placeholder="Pet History Description"></textarea>
             <button type="submit" class="btn submit-btn">Submit</button>
         </div>
-        <div class="form-alert"></div>
+        <!-- <div class="form-alert"></div> -->
         <!-- <% if (locals.messages && messages.error) { %>
             <div class="form-alert text-error">
                 <%= messages.error %>
