@@ -1,23 +1,33 @@
-const express = require('express');
+const express = require('express'); // import libaries
 const app = express();
+const path = require('path');
+const bodyParser = require('body-parser') 
 
-// const path = require('path');
-const bodyParser = require('body-parser')
-const pets = require('./routes/pets');
-const connectDB = require('./db/connect');
-const port = process.env.PORT || 5500;
+
+
+const connectDB = require('./db/connect'); // call database connection
+const port = process.env.PORT || 5500; // set port
+
+const pets = require('./routes/pets'); 
 const Pet = require('./models/Pet');
+const loginRoutes = require('./routes/login'); //
 
-//Local middleware
+
+
+//middleware for error handling
 const errorHandlerMiddleware = require('./middleware/error-handler');
 // const { getAllPets, createPet } = require('./controller/pets');
 const { deletePet } = require('./controller/pets')
 
-//libraires
+//set up ejs for rendering views, use bodyparser
 app.set('view engine', 'ejs');
+app.set("views", path.join(__dirname, '/views'));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('./public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
+
+
+app.use("/", loginRoutes) //set routes for login and signup
 
 //routes
 // app.use('/pets', pets);

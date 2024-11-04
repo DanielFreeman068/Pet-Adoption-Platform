@@ -13,6 +13,10 @@
     <!-- main css -->
     <link rel="stylesheet" href="../css/login.css" />
     <title>Login/Sign Up</title>
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="./login.js"></script>
 </head>
 <body>
     <div class="header">
@@ -20,23 +24,23 @@
     </div>
     <main class="container">
         <div class="login-card">
-            <form action="" class="form-group">
+            <form action="/login" class="form-group" method="POST">
                 <div class="form-bar">
                     <label for="username">Username:</label><br>
                     <input required type="text" id="username" name="username" placeholder="UserName123">
                 </div>
                 <div class="form-bar">
                     <label for="password">Password:</label><br>
-                    <input required type="text" name="password" id="password" placeholder="PassWord123">
+                    <input required type="password" name="password" id="password" placeholder="PassWord123">
+                </div>
+                <div class="check">
+                    <input type="checkbox" id="signUp">
+                    <div>Create Account</div>
+                </div>
+                <div class="form-group login">
+                    <input id="login" type="submit" value="Login">
                 </div>
             </form>
-            <div class="check">
-                <input type="checkbox" name="check">
-                <div>Create Account</div>
-            </div>
-            <div class="form-group login">
-                <input id="login" type="submit" value="Login">
-            </div>
         </div>
     </main>
     <footer>
@@ -49,8 +53,5 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
     ></script>
-    <!-- JQUERY -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="./login.js"></script>
 </body>
 </html>
