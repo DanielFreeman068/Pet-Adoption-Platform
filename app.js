@@ -10,14 +10,11 @@ const port = process.env.PORT || 5500; // set port
 
 const pets = require('./routes/pets'); 
 const Pet = require('./models/Pet');
-const loginRoutes = require('./routes/login'); //
+// const loginRoutes = require('./routes/login'); //
 
 
 
 //middleware for error handling
-const errorHandlerMiddleware = require('./middleware/error-handler');
-// const { getAllPets, createPet } = require('./controller/pets');
-const { deletePet } = require('./controller/pets')
 
 //set up ejs for rendering views, use bodyparser
 app.set('view engine', 'ejs');
@@ -26,46 +23,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
-
-app.use("/", loginRoutes) //set routes for login and signup
-
-//routes
-// app.use('/pets', pets);
-app.use(errorHandlerMiddleware);
-
-app.get('/', async (req, res) => {
-    try {
-        const allPets = await Pet.find({});  
-        res.render('index', { allPets });
-    } catch (error) {
-        console.error("Error fetching pets", error);
-        res.render('index', { allPets: [] });
-    }
-});
-
-app.post('/pets', async (req,res) => {
-    // createPet();
-    Pet.create(req.body)
-    const allPets = await Pet.find({});  
-    res.render('index', { allPets })
-})
-
-app.get('/admin', async (req,res) => {
-    try {
-        const allPets = await Pet.find({});  
-        res.render('admin', { allPets });
-    } catch (error) {
-        console.error("Error fetching pets", error);
-        res.render('admin', { allPets: [] });
-    }
-});
-
-app.post('/pets/:id/delete', async(req,res) => {
-    const {id:petID} = req.params
-    await Pet.findOneAndDelete({_id:petID})
-    const allPets = await Pet.find({})
-    res.redirect('/admin')
-})
+app.use('/', pets)
+// app.use("/", loginRoutes) //set routes for login and signup
 
 //initiate server
 const serverInit = async () => {

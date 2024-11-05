@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <!-- FIND A FAVICON -->
+    <!-- slogan = find your new best friend -->
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+    <!-- normalize css -->
+    <link rel="stylesheet" href="./normalize.css" />
+    <!-- main css -->
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Pet Adoption Platform || pet profile</title>
+</head>
+    <body>
+        <a href="/">Return Home</a>
+        <header>pet profile</header>
+        <h2>Name: <%= pet.name %></h2>
+        <h3>Breed: <%= pet.breed %></h3>
+        <p>Age: <%= pet.age %></p>
+        <p>Gender: <%= pet.gender %></p>
+        <p>Description: <%= pet.description %></p>
+        <p>Behavior: <%= pet.behavior %></p>
+        <p>History: <%= pet.history %></p>
+        <p>Owner's Contact:<a href="mailto:"><%= pet.email %></a></p>
+    </body>
+</html>

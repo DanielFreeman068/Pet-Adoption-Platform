@@ -28,13 +28,7 @@
                         <div class="single-pet">
                             <h5><%= pet.id %></h5>
                             <h5><%= pet.name %></h5>
-                            <h5><%= pet.breed %></h5>
-                            <h5><%= pet.gender %></h5>
-                            <h5><%= pet.age %></h5>
-                            <h5><%= pet.description %></h5>
-                            <h5><%= pet.behavior %></h5>
-                            <h5><%= pet.history %></h5>
-                            <form action="/pets/<%= pet.id %>/delete" method="POST">
+                            <form method="post" action="/<%= pet.id %>">
                                 <div class="pet-links">
                                     <button type="submit" class="delete-btn">
                                     <i class="fas fa-trash"></i>
@@ -47,13 +41,5 @@
             <% } %>
         </div>
         </section>
-        <!-- axios -->
-        <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
-        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
-        ></script>
-        <!-- <script src="./admin.js"></script> -->
     </body>
 </html>

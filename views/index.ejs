@@ -20,19 +20,15 @@
                 <% allPets.forEach(function(pet) { %>
                     <div class="single-pet">
                         <h5><%= pet.name %></h5>
-                        <h5><%= pet.breed %></h5>
                         <h5><%= pet.gender %></h5>
-                        <h5><%= pet.age %></h5>
-                        <h5><%= pet.description %></h5>
-                        <h5><%= pet.behavior %></h5>
-                        <h5><%= pet.history %></h5>
+                        <a href="/<%= pet.id %>">View Profile</a>
                     </div>
                 <% }); %>
             </div>
         <% } %>
     </section>
 
-    <form class="pet-form" action="/pets" method="POST">
+    <form class="pet-form" method="POST">
         <h4>Add Pets</h4>
         <div class="form-control">
             <input type="text" name="name" id="pet-input" class="pet-input" placeholder="Name of Pet" required />
@@ -42,33 +38,13 @@
                 <option value="male">Male</option>
                 <option value="female">Female</option>
             </select>
+            <input type="email" name="email" id="email" class="pet-input" placeholder="Owner's Email" required>
             <input type="number" name="age" id="age-input" class="pet-input" placeholder="Age of Pet" required />
-            <textarea id="description-input" name="description" rows="4" cols="50" maxlength="100" placeholder="Pet Description"></textarea>
-            <textarea id="behavior-input" name="behavior" rows="4" cols="50" maxlength="100" placeholder="Pet Behavior Description"></textarea>
-            <textarea id="history-input" name="history" rows="4" cols="50" maxlength="100" placeholder="Pet History Description"></textarea>
+            <textarea id="description-input" name="description" rows="4" cols="50" maxlength="100" placeholder="Pet Description" required></textarea>
+            <textarea id="behavior-input" name="behavior" rows="4" cols="50" maxlength="100" placeholder="Pet Behavior Description" required></textarea>
+            <textarea id="history-input" name="history" rows="4" cols="50" maxlength="100" placeholder="Pet History Description" required></textarea>
             <button type="submit" class="btn submit-btn">Submit</button>
         </div>
-        <!-- <div class="form-alert"></div> -->
-        <!-- <% if (locals.messages && messages.error) { %>
-            <div class="form-alert text-error">
-                <%= messages.error %>
-            </div>
-        <% } %>
-        <% if (locals.messages && messages.success) { %>
-            <div class="form-alert text-success">
-                <%= messages.success %>
-            </div>
-        <% } %> -->
     </form>
-    <script src="../public/index.js"></script>
-    <!-- <script>
-        const alerts = document.querySelectorAll('.form-alert');
-        alerts.forEach(alert => {
-            setTimeout(() => {
-                alert.style.display = 'none';
-                alert.classList.remove('text-success', 'text-error');
-            }, 3000);
-        });
-    </script> -->
 </body>
 </html>
