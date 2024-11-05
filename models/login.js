@@ -14,6 +14,6 @@ const loginSchema = new mongoose.Schema({ // create login schema
         minlength: [6, "Atleast 6 charachters."],
         maxlength: [12, "No more than 12 charachters."],
     }
-})
+},{collection:'users'})
 
-module.exports = mongoose.model('login', loginSchema) // export login schema
+module.exports = mongoose.model('User', loginSchema) // export login schema

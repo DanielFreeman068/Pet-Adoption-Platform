@@ -53,7 +53,7 @@ html body .container .login-card {
   width: 65vw;
   height: 40vh;
   padding: 1rem;
-  border-radius: 7%;
+  border-radius: 5%;
   background-color: var(--bluee);
   box-shadow: 2px 2px 10px black;
 }
@@ -61,13 +61,13 @@ html body .container .login-card .form-group {
   padding: 20px 2rem 0 2rem;
 }
 html body .container .login-card .form-group .form-bar {
-  margin-bottom: 2rem;
+  margin-bottom: 2vh;
   justify-content: center;
   display: flex;
   flex-direction: column;
 }
 html body .container .login-card .form-group label {
-  font-size: 3.2em;
+  font-size: 7vw;
   font-family: var(--headingFont);
   font-weight: 600;
 }
@@ -88,54 +88,98 @@ html body .container .login-card .form-group #login {
   background-color: white;
   font-family: var(--headingFont);
   font-weight: 600;
-  padding-bottom: 2%;
+  padding-bottom: 1%;
+  border: none;
+  transition: 500ms;
 }
-html body .container .login-card .login {
+html body .container .login-card .form-group #login:hover {
+  cursor: pointer;
+  background-color: gray;
+  color: #81ceeb;
+  font-size: 8vw;
+}
+html body .container .login-card .form-group .login {
+  height: auto;
   padding: 0;
   padding: 0 2rem 6px 2rem;
 }
-html body .container .login-card .check {
+html body .container .login-card .form-group .check {
   font-size: 4.5vw;
   display: flex;
   margin: auto;
   float: left;
   padding-left: 5vw;
   justify-content: space-between;
-  width: 80%;
+  width: 90%;
   margin-bottom: 2vh;
 }
-html body .container .login-card .check input {
+html body .container .login-card .form-group .check input {
   height: 5vw;
   width: 5vw;
   border: none;
 }
-html body .container .login-card .check div {
+html body .container .login-card .form-group .check input:hover {
+  cursor: pointer;
+}
+html body .container .login-card .form-group .check div {
   font-family: var(--bodyFont);
 }
 html body footer {
   width: 100%;
   border-top: black solid 1px;
-  height: 3vh;
+  height: 4vw;
   text-align: center;
   position: fixed;
   bottom: 0;
-  font-size: 3vw;
-  padding-top: 6px;
+  font-size: 2.5vw;
+  padding-top: 4px;
 }
 
 @media (orientation: landscape) {
   html body .header {
-    margin-bottom: 10vw;
+    margin-bottom: 5vh;
   }
   html body .header img {
-    right: 93%;
-    width: 5vw;
-    height: 5vw;
+    right: 94%;
+    width: 4vw;
+    height: 4vw;
   }
   html body .container {
-    height: 45vw;
+    height: 40vw;
   }
   html body .container .login-card {
-    height: 60vh;
+    height: 27vw;
+    width: 38vw;
+  }
+  html body .container .login-card .form-group {
+    padding: 1vh 2vw 0 2vw;
+  }
+  html body .container .login-card .form-group .form-bar label {
+    font-size: 3vw;
+  }
+  html body .container .login-card .form-group .form-bar input {
+    font-size: 2vw;
+  }
+  html body .container .login-card .form-group .check {
+    width: 78%;
+    margin: 0.6vw 0 1.4vw 0;
+    padding-left: 2vw;
+  }
+  html body .container .login-card .form-group .check input {
+    width: 3vw;
+    height: 3vw;
+  }
+  html body .container .login-card .form-group .check div {
+    font-size: 2.5vw;
+  }
+  html body .container .login-card .form-group .login #login {
+    font-size: 3vw;
+    transition: 500ms;
+  }
+  html body .container .login-card .form-group .login #login:hover {
+    cursor: pointer;
+    background-color: gray;
+    color: #81ceeb;
+    font-size: 3.5vw;
   }
 }/*# sourceMappingURL=login.css.map */
