@@ -15,7 +15,139 @@ box-sizing: border-box;
 --bodyFont: 'Montserrat', sans-serif;
 --smallText: 0.7em;
 }
-body {
+html {
     margin: 0;
+}
+html body {
     background-color: var(--sky);
+}
+html body header {
+    height: 10vh;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    border-bottom: 1px solid black;
+    margin-bottom: 5vh;
+}
+html body header img {
+    position: fixed;
+    right: 84%;
+    top: 1.5%;
+    display: flex;
+    width: 12vw;
+    height: 12vw;
+}
+header h1{
+    display: flex;
+    margin: auto;
+    font-size: 6vw;
+}
+main{
+    width: 90%;
+    margin: auto;
+}
+.box{
+    padding: 3rem 3rem 2rem 3rem;
+    justify-content: center;
+    width: 85%;
+    margin: auto;
+}
+.box-head{
+    display: flex;
+    justify-content: space-between;
+    width: 98%;
+    margin-left: 1%;
+}
+.title{
+    font-size: 250%;
+}
+.slogan{
+    font-size: 150%;
+    align-content: center;
+}
+.image{
+    width: 100%;
+    height: 20vh;
+}
+.desc{
+    font-size: 120%;
+    
+}
+footer{
+    background-color: var(--honey);
+    height: 62vh;
+    width: auto;
+    overflow: hidden;
+    font-family: var(--bodyFont);
+}
+.fcont{
+    width: 75%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;
+}
+.fhead{
+    font-size: 4vw;
+    margin-bottom: 2vh;
+}
+.flogo{
+    display: flex;
+    justify-content: space-between;
+}
+.flogo img{
+    width: 24vw;
+    height: 24vw;
+    border-radius: 50%;
+}
+.ftxt{
+    text-align: center;
+    align-content: center;
+}
+.links{
+    margin-top: 1vh;
+}
+.links h1{
+    font-size: 7vw;
+    margin: auto;
+    padding-bottom: 1vh;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 2px solid #81ceeb;
+    margin-bottom: 1vh;
+}
+.links h3{
+    font-size: 4vw;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1vh;
+}
+.socials{
+    margin-top: 4vh;
+    font-family: var(--bodyFont);
+}
+.socialtxt{
+    font-size: 7vw;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 0;
+    padding-bottom: 1vh;
+    border-bottom: 2px solid #81ceeb;
+}
+.social-imgs{
+    display: flex;
+    padding: 1rem 2rem 2rem 0;
+    justify-content: space-between;
+}
+.socials a img{
+    width: 16vw;
+    height: 16vw;
+}
+.foot{
+    position: static;
+    bottom: 0%;
+    font-size: 3vw;
+    text-align: center;
 }
