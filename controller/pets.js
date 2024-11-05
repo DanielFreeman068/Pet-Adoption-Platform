@@ -46,8 +46,8 @@ const createPet = asyncWrapper(async (req, res) => {
 
 const getPet = asyncWrapper(async (req,res) => {
     try {
-        console.log("Pet ID:", req.params.id);
         const pet = await Pet.findById(req.params.id);
+        console.log("Pet ID:", req.params.id);
         console.log(pet)
         res.render('petProfile', { pet });
     } catch (error) {
