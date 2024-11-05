@@ -148,7 +148,7 @@ html body footer {
     height: 40vw;
   }
   html body .container .login-card {
-    height: 27vw;
+    height: 35vw;
     width: 38vw;
   }
   html body .container .login-card .form-group {
@@ -161,7 +161,7 @@ html body footer {
     font-size: 2vw;
   }
   html body .container .login-card .form-group .check {
-    width: 78%;
+    width: 90%;
     margin: 0.6vw 0 1.4vw 0;
     padding-left: 2vw;
   }
@@ -172,9 +172,13 @@ html body footer {
   html body .container .login-card .form-group .check div {
     font-size: 2.5vw;
   }
+  html body .container .login-card .form-group .login {
+    padding: 1vw;
+  }
   html body .container .login-card .form-group .login #login {
     font-size: 3vw;
     transition: 500ms;
+    padding: 1vw 3vw;
   }
   html body .container .login-card .form-group .login #login:hover {
     cursor: pointer;

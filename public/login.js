@@ -1,8 +1,8 @@
 $(document).ready(function() {
-    $(".login").on("submit", function(event) {
+    $(".form-group").on("submit", function(event) {
         event.preventDefault(); 
-        if ($("#signUp").is(":checked")) {
-            console.log("work");
+        if($("#signup").is(":checked")) {
+            alert("working")
             this.action = "/signup";
         } else {
             this.action = "/login"; 

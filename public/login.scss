@@ -146,7 +146,7 @@ html{
             .container{
                 height: 40vw;
                 .login-card{
-                    height: 27vw;
+                    height: 35vw;
                     width: 38vw;
                     .form-group{
                         padding: 1vh 2vw 0 2vw;
@@ -159,7 +159,7 @@ html{
                             }
                         }
                         .check{
-                            width: 78%;
+                            width: 90%;
                             margin: .6vw 0 1.4vw 0;
                             padding-left: 2vw;
                             input{
@@ -171,9 +171,11 @@ html{
                             }
                         }
                         .login{
+                            padding: 1vw;
                             #login{
                                 font-size: 3vw;
                                 transition: 500ms;
+                                padding: 1vw 3vw;
                                 &:hover{
                                     cursor: pointer;
                                     background-color: gray;
