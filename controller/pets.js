@@ -45,10 +45,14 @@ const createPet = asyncWrapper(async (req, res) => {
 });
 
 const getPet = asyncWrapper(async (req,res) => {
-    console.log("Pet ID:", req.params.id);
-    const pet = await Pet.findById(req.params.id);
-    console.log(pet)
-    res.render('petProfile', { pet });
+    try {
+        console.log("Pet ID:", req.params.id);
+        const pet = await Pet.findById(req.params.id);
+        console.log(pet)
+        res.render('petProfile', { pet });
+    } catch (error) {
+        res.render('404', { error });
+    }
 })
 
 const deletePet = asyncWrapper( async (req,res) => {

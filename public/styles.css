@@ -77,6 +77,10 @@ list-style-type: none;
 a {
 text-decoration: none;
 }
+.error{
+    margin:0 auto;
+    text-align: center;
+}
 
 /* button styling */
 .btn {
