@@ -32,17 +32,15 @@ const createPet = asyncWrapper(async (req, res) => {
 });
 
 const getPet = asyncWrapper(async (req,res) => {
-    const {id:petID } = req.params;
-    const pet = await Pet.findOne({_id:petID});
-    if (!pet) {
-        return res.status(404).send('Pet not found');
-    }
+    console.log("Pet ID:", req.params.id);
+    const pet = await Pet.findById(req.params.id);
+    console.log(pet)
     res.render('petProfile', { pet });
 })
 
 const deletePet = asyncWrapper( async (req,res) => {
-    const {id:petID} = req.params
-    await Pet.findOneAndDelete({_id:petID})
+    console.log("Pet ID:", req.params.id);
+    await Pet.findByIdAndDelete(req.params.id);
     const allPets = await Pet.find({})
     res.render('admin', { allPets })
 })

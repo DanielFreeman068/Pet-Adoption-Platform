@@ -23,7 +23,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
-// app.use('/', pets)
+app.use('/login', pets)
+app.use('/', pets)
 // app.use("/", loginRoutes) //set routes for login and signup
 
 app.get('/testimonials', async (req, res) => {
