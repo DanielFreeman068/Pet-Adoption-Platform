@@ -4,7 +4,6 @@ const router = express.Router();
 const {
     getAllUsers,
     getUsername,
-    // getPassword,
     createUser,
     deleteUser,
     createPet,
@@ -18,7 +17,7 @@ const {
     getFAQS,
 } = require('../controller/pets');
 
-router.route('/login').get(getLogin);
+router.route('/login').get(getLogin).post(getUsername);
 router.route("/signup").post(createUser);
 router.route('/FAQ').get(getFAQS);
 router.route('/testimonials').get(getTestimonials);

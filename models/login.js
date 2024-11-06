@@ -6,14 +6,18 @@ const loginSchema = new mongoose.Schema({ // create login schema
         required: true,
         unique: true,
         minlength: [3, "Atleast 3 charachters."],
-        maxlength: [20, "No more than 20 charachters."],
+        maxlength: [20, "No more than 20 characters."],
     },
     password: {
         type: String,
         required: true,
         minlength: [6, "Atleast 6 charachters."],
-        maxlength: [12, "No more than 12 charachters."],
+        maxlength: [100, "No more than 100 characters."],
+    },
+    admin:{
+        type: Boolean,
+        default: false,
     }
-},{collection:'users'})
+},{collection:'users', versionKey: false})
 
 module.exports = mongoose.model('User', loginSchema) // export login schema

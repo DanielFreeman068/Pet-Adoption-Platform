@@ -2,6 +2,8 @@ const express = require('express'); // import libaries
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser') 
+const cookieParser = require('cookie-parser');
+
 
 const connectDB = require('./db/connect'); // call database connection
 const port = process.env.PORT || 5500; // set port
@@ -16,6 +18,7 @@ app.set("views", path.join(__dirname, '/views'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
+app.use(cookieParser("password"))
 app.use('/', pets)
 
 //initiate server
