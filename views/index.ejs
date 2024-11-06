@@ -11,6 +11,27 @@
     <title>Pet Adoption Platform || Home</title>
 </head>
 <body>
+    <!-- Collapsed Sidepanel -->
+    <div class="overlay"></div>
+    <div class="side-menu">
+        <button class="close-menu">×</button>
+        <div class="side-menu-links">
+            <a href="/">Home</a>
+            <a href="/testimonials">Testimonials</a>
+            <a href="/about">About</a>
+            <a href="#surrender">Surrender Pet</a>
+        </div>
+    </div>
+    <header class="header">
+        <!-- Temp Text Logo -->
+        <div class="logo">
+            <!-- <img src="#" alt="Fido Logo" /> -->
+            <span class="logo-text">
+                <span class="logo-b">Fido</span>
+            </span>
+        </div>
+        <button class="hamburger">☰</button>
+    </header>
     <header>Dashboard</header>
     <section class="pets-container">
         <% if (!allPets || allPets.length === 0) { %>
@@ -43,8 +64,9 @@
             <textarea id="description-input" name="description" rows="4" cols="50" maxlength="100" placeholder="Pet Description" required></textarea>
             <textarea id="behavior-input" name="behavior" rows="4" cols="50" maxlength="100" placeholder="Pet Behavior Description" required></textarea>
             <textarea id="history-input" name="history" rows="4" cols="50" maxlength="100" placeholder="Pet History Description" required></textarea>
-            <button type="submit" class="btn submit-btn">Submit</button>
+            <button id="surrender" type="submit" class="btn submit-btn">Submit</button>
         </div>
     </form>
+    <script src="/hamburger.js"></script>
 </body>
 </html>
