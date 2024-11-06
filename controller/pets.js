@@ -1,3 +1,4 @@
+//all of my variables and middleware
 const Pet = require('../models/Pet');
 const asyncWrapper = require('../middleware/async');
 const User = require("../models/login")
@@ -5,69 +6,124 @@ const bcrypt = require('bcrypt');
 const cookieParser = require("cookie-parser")
 const loggedIn = false
 
-const getFAQS = asyncWrapper(async(req,res) => {
-    res.render('FAQ')
-})
 
-const getTestimonials = asyncWrapper(async(req,res) => {
-    res.render('testimonials')
-})
-
-const success = asyncWrapper(async (req,res) => {
-    res.render('success')
-})
-
-const getLogin = asyncWrapper(async (req,res) => {
-    if(req.cookies.loggedIn){
-        res.redirect("/")
-    }else{
-        res.render('login')
+//gets about page rendered
+const getAbout = asyncWrapper(async (req, res) => {
+    try {
+        // Render the about page successfully
+        res.status(200).render('about');
+    } catch (error) {
+        // In case of an error, return a 500 Internal Server Error status
+        res.status(500).render('404', { error });
     }
-})
-
+});
+//gets faqs page rendered
+const getFAQS = asyncWrapper(async (req, res) => {
+    try {
+        // Render the faqs page successfully
+        res.status(200).render('FAQS');
+    } catch (error) {
+        // In case of an error, return a 500 Internal Server Error status
+        res.status(500).render('404', { error });
+    }
+});
+//gets testimonials page rendered
+const getTestimonials = asyncWrapper(async (req, res) => {
+    try {
+        // Render the testimonials page successfully
+        res.status(200).render('testimonials');
+    } catch (error) {
+        // In case of an error, return a 500 Internal Server Error status
+        res.status(500).render('404', { error });
+    }
+});
+//gets success page rendered
+const getSuccess = asyncWrapper(async (req, res) => {
+    try {
+        // Render the success page successfully
+        res.status(200).render('success');
+    } catch (error) {
+        // In case of an error, return a 500 Internal Server Error status
+        res.status(500).render('404', { error });
+    }
+});
+//gets login page rendered
+const getLogin = asyncWrapper(async (req, res) => {
+    try {
+        // Render the login page successfully
+        res.status(200).render('login');
+    } catch (error) {
+        // In case of an error, return a 500 Internal Server Error status
+        res.status(500).render('404', { error });
+    }
+});
+//gets the users and pets to render on the admin page
 const getAdminDashboard = asyncWrapper(async (req, res) => {
     try {
+        // Fetch all pets and users from the database for the admin dashboard
         const allPets = await Pet.find({});
-        res.render('admin', { allPets });
+        const users = await User.find({});
+        res.status(200).render('admin', { allPets, users });
     } catch (error) {
-        console.error('Error fetching pets', error);
-        res.render('admin', {allPets: []});
+        // If an error occurs, return a 500 Internal Server Error status
+        res.status(500).render('404', { error });
     }
-})
+});
 
+
+//gets all pets to render
 const getAllPets = asyncWrapper(async (req, res) => {
-    const loggedIn = req.cookies.loggedIn || false;
     try {
-        const allPets = await Pet.find({});  
-        res.render('index', { allPets, loggedIn });
+        // Fetch all pets from the database and renders the index page
+        const allPets = await Pet.find({});
+        res.status(200).render('index', { allPets });
     } catch (error) {
-        console.error("Error fetching pets", error);
-        res.render('index', { allPets: [] });
+        // If there's an error, return a 500 Internal Server Error status
+        res.status(500).render('404', { error });
     }
 });
-
+//creates pet
 const createPet = asyncWrapper(async (req, res) => {
-    Pet.create(req.body)
-    res.render('success')
+    try {
+        //creates pet and renders updated page
+        const newPet = await Pet.create(req.body);
+        res.status(201).render('success', { newPet });
+    } catch (error) {
+        // If there's a validation error or any other issue, return a 400 Bad Request status
+        res.status(400).render('404', { error });
+    }
+});
+//gets specific pet to render on separate profile
+const getPet = asyncWrapper(async (req, res) => {
+    try {
+        //looks for pet based on id and either errors or renders the pet
+        const pet = await Pet.findById(req.params.id);
+        if (!pet) {
+            return res.status(404).json({ message: "Pet not found"});
+        }
+        res.status(200).render('petProfile', { pet });
+    } catch (error) {
+        // If there's an error with the request, return a 500 Internal Server Error status
+        res.status(500).render('404', { error });
+    }
+});
+//deletes the specified pet
+const deletePet = asyncWrapper(async (req, res) => {
+    try {
+        // Attempt to find and delete the pet by ID or errors if not found
+        const deletedPet = await Pet.findByIdAndDelete(req.params.id);
+        if (!deletedPet) {
+            return res.status(404).json({ message: "Pet not found" });
+        }
+        const allPets = await Pet.find({});
+        res.status(200).render('admin', { allPets });
+    } catch (error) {
+        //server errors
+        res.status(500).render('404', { error });
+    }
 });
 
-const getPet = asyncWrapper(async (req,res) => {
-    try {
-        const pet = await Pet.findById(req.params.id);
-        console.log("Pet ID:", req.params.id);
-        console.log(pet)
-        res.render('petProfile', { pet });
-    } catch (error) {
-        res.render('404', { error });
-    }
-})
 
-const deletePet = asyncWrapper( async (req,res) => {
-    console.log("Pet ID:", req.params.id);
-    await Pet.findByIdAndDelete(req.params.id);
-    const allPets = await Pet.find({})
-    res.render('admin', { allPets })
-})
 
 
 //USERS
@@ -85,7 +141,7 @@ const getUsername = asyncWrapper(async (req, res) => { // get username funcr
         }
         const passMatch = await bcrypt.compare(req.body.password, check.password);
         if(passMatch){
-            const allPets = await Pet.find({});  
+            // const allPets = await Pet.find({});  
             res.cookie("loggedIn", true, {maxAge: 7 * 24 * 60 * 60 * 1000})
             res.cookie("username", "req.body.username", {maxAge: 7 * 24 * 60 * 60 *1000});
             res.redirect('/');
@@ -123,14 +179,16 @@ const deleteUser = asyncWrapper(async (req, res) => { // delete user func
 })
 
 module.exports = {
+    getAbout,
     getAllUsers,
     getUsername,
+    // getPassword,
     createUser,
     deleteUser,
     getFAQS,
     getTestimonials,
     getLogin,
-    success,
+    getSuccess,
     getAdminDashboard,
     getAllPets,
     createPet,

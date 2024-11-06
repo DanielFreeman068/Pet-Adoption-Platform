@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-
 const {
     getAllUsers,
     getUsername,
+    // getPassword,
     createUser,
     deleteUser,
     createPet,
@@ -11,19 +11,22 @@ const {
     deletePet,
     getAllPets,
     getAdminDashboard,
-    success,
+    getSuccess,
     getLogin,
     getTestimonials,
     getFAQS,
+    getAbout,
 } = require('../controller/pets');
-
-router.route('/login').get(getLogin).post(getUsername);
-router.route("/signup").post(createUser);
+//routes to render pages
+router.route('/login').get(getLogin);
+router.route('/about').get(getAbout);
 router.route('/FAQ').get(getFAQS);
 router.route('/testimonials').get(getTestimonials);
+router.route('/success').get(getSuccess);
+//routes to render and deal with posts
 router.route('/').get(getAllPets).post(createPet);
-router.route('/success').get(success);
 router.route('/admin').get(getAdminDashboard);
 router.route('/:id').post(deletePet).get(getPet);
+
 
 module.exports = router;
