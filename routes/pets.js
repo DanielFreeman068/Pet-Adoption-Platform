@@ -10,12 +10,14 @@ const {
     getPet,
     deletePet,
     getAllPets,
-    getAdminDashboard,
     getSuccess,
     getLogin,
     getTestimonials,
     getFAQS,
     getAbout,
+    getAdminDashboardPets,
+    getAdminDashboardUsers,
+    deletePetOrUser,
 } = require('../controller/pets');
 //routes to render pages
 router.route('/login').get(getLogin);
@@ -25,8 +27,21 @@ router.route('/testimonials').get(getTestimonials);
 router.route('/success').get(getSuccess);
 //routes to render and deal with posts
 router.route('/').get(getAllPets).post(createPet);
-router.route('/admin').get(getAdminDashboard);
-router.route('/:id').post(deletePet).get(getPet);
+router.route('/adminPets').get(getAdminDashboardPets);
+router.route('/adminUsers').get(getAdminDashboardUsers)
+router.route('/:id').post(deletePetOrUser).get(getPet);
+
+// router.route('/:id')
+// .get(getPet)
+// .post((req, res, next) => {
+//     if (req.body.action === 'deletePet') {
+//     return deletePet(req, res, next);
+//     } else if (req.body.action === 'deleteUser') {
+//     return deleteUser(req, res, next);
+//     } else {
+//     res.status(400).send('Invalid action');
+//     }
+// });
 
 
 module.exports = router;

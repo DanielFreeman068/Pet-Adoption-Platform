@@ -57,20 +57,28 @@ const getLogin = asyncWrapper(async (req, res) => {
         res.status(500).render('404', { error });
     }
 });
-//gets the users and pets to render on the admin page
-const getAdminDashboard = asyncWrapper(async (req, res) => {
+//gets the pets to render on the admin page
+const getAdminDashboardPets = asyncWrapper(async (req, res) => {
     try {
         // Fetch all pets and users from the database for the admin dashboard
         const allPets = await Pet.find({});
-        const users = await User.find({});
-        res.status(200).render('admin', { allPets, users });
+        res.status(200).render('adminPets', { allPets });
     } catch (error) {
         // If an error occurs, return a 500 Internal Server Error status
         res.status(500).render('404', { error });
     }
 });
-
-
+//gets the users to render on the admin page
+const getAdminDashboardUsers = asyncWrapper(async (req, res) => {
+    try {
+        // Fetch all pets and users from the database for the admin dashboard
+        const users = await User.find({});
+        res.status(200).render('adminUsers', { users });
+    } catch (error) {
+        // If an error occurs, return a 500 Internal Server Error status
+        res.status(500).render('404', { error });
+    }
+});
 //gets all pets to render
 const getAllPets = asyncWrapper(async (req, res) => {
     try {
@@ -108,23 +116,50 @@ const getPet = asyncWrapper(async (req, res) => {
     }
 });
 //deletes the specified pet
-const deletePet = asyncWrapper(async (req, res) => {
+const deletePetOrUser = asyncWrapper(async (req, res) => {
     try {
-        // Attempt to find and delete the pet by ID or errors if not found
-        const deletedPet = await Pet.findByIdAndDelete(req.params.id);
-        if (!deletedPet) {
-            return res.status(404).json({ message: "Pet not found" });
+        try {
+            // Attempt to find and delete the pet by ID or errors if not found
+            const deletedPet = await Pet.findByIdAndDelete(req.params.id);
+            if (!deletedPet) {
+                return res.status(404).json({ message: "Pet not found" });
+            }
+            const allPets = await Pet.find({});
+            res.status(200).render('adminPets', { allPets });
+        } catch {
+            res.status(404)
         }
-        const allPets = await Pet.find({});
-        res.status(200).render('admin', { allPets });
+        try {
+            // Attempt to find and delete the pet by ID or errors if not found
+            const deletedUser = await User.findByIdAndDelete(req.params.id);
+            if (!deletedUser) {
+                return res.status(404).json({ message: "User not found" });
+            }
+            const users = await User.find({});
+            res.status(200).render('adminUsers', { users });
+        } catch {
+            res.status(404)
+        }
     } catch (error) {
         //server errors
         res.status(500).render('404', { error });
     }
 });
-
-
-
+//deletes the specified user
+const deleteUser = asyncWrapper(async (req, res) => {
+    try {
+        // Attempt to find and delete the pet by ID or errors if not found
+        const deletedUser = await User.findByIdAndDelete(req.params.id);
+        if (!deletedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        const users = await User.find({});
+        res.status(200).render('adminUsers', { users });
+    } catch (error) {
+        //server errors
+        res.status(500).render('404', { error });
+    }
+});
 
 //USERS
 
@@ -168,16 +203,6 @@ const createUser = asyncWrapper(async (req, res) => { // create user func
 
     return res.send("<script>alert('User Created Successfully'); window.location.href = '/login'; </script>").status(200)
 })
-
-const deleteUser = asyncWrapper(async (req, res) => { // delete user func
-    const {id: userID} = req.params;
-    const user = await User.findOneAndDelete({_id: userID}); // find by id and delete user
-    if(!user){
-        return res.send("<script>alert('User Not Found'); window.location.href = '/login'; </script>").status(404) // return custom error message if user not found
-    }
-    res.send("<script>alert('User Deleted'); window.location.href = '/admin'; </script>").status(200)
-})
-
 module.exports = {
     getAbout,
     getAllUsers,
@@ -189,9 +214,10 @@ module.exports = {
     getTestimonials,
     getLogin,
     getSuccess,
-    getAdminDashboard,
+    getAdminDashboardPets,
+    getAdminDashboardUsers,
     getAllPets,
     createPet,
     getPet,
-    deletePet,
+    deletePetOrUser,
 };

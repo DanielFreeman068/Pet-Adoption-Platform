@@ -14,10 +14,11 @@
     <link rel="stylesheet" href="./normalize.css" />
     <!-- main css -->
     <link rel="stylesheet" href="./styles.css" />
-    <title>Pet Adoption Platform || Home</title>
+    <title>Pet Adoption Platform || Admin</title>
 </head>
     <body>
-        <header>Admin Page</header>
+        <a href="/adminUsers">Go to Users</a>
+        <header>Pets</header>
         <section class="pets-container">
         <div class="pets">
             <% if (!allPets || allPets.length === 0) { %>
@@ -40,28 +41,6 @@
                 </div>
             <% } %>
         </div>
-        <header>Users</header>
-        <!-- <div class="pets">
-            <% if (!users || users.length === 0) { %>
-                <h5 class="empty-list">No Users Available</h5>
-            <% } else { %>
-                <div class="pets">
-                    <% users.forEach(function(user) { %>
-                        <div class="single-pet">
-                            <h5><%= user.id %></h5>
-                            <h5><%= user.username %></h5>
-                            <form method="post" action="/<%= user.id %>">
-                                <div class="pet-links">
-                                    <button type="submit" class="delete-btn">
-                                    <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    <% }); %>
-                </div>
-            <% } %>
-        </div> -->
         </section>
     </body>
 </html>
