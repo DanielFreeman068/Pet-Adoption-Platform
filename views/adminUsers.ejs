@@ -28,7 +28,7 @@
                         <div class="single-pet">
                             <h5><%= user.id %></h5>
                             <h5><%= user.username %></h5>
-                            <form method="post" action="/<%= user.id %>">
+                            <form method="post" action="/users/delete/<%= user.id %>">
                                 <div class="pet-links">
                                     <button type="submit" class="delete-btn">
                                     <i class="fas fa-trash"></i>

@@ -29,7 +29,7 @@
                         <div class="single-pet">
                             <h5><%= pet.id %></h5>
                             <h5><%= pet.name %></h5>
-                            <form method="post" action="/<%= pet.id %>">
+                            <form method="post" action="/pets/delete/<%= pet.id %>">
                                 <div class="pet-links">
                                     <button type="submit" class="delete-btn">
                                     <i class="fas fa-trash"></i>

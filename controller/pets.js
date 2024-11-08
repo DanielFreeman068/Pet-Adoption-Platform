@@ -115,51 +115,6 @@ const getPet = asyncWrapper(async (req, res) => {
         res.status(500).render('404', { error });
     }
 });
-//deletes the specified pet
-const deletePetOrUser = asyncWrapper(async (req, res) => {
-    try {
-        try {
-            // Attempt to find and delete the pet by ID or errors if not found
-            const deletedPet = await Pet.findByIdAndDelete(req.params.id);
-            if (!deletedPet) {
-                return res.status(404).json({ message: "Pet not found" });
-            }
-            const allPets = await Pet.find({});
-            res.status(200).render('adminPets', { allPets });
-        } catch {
-            res.status(404)
-        }
-        try {
-            // Attempt to find and delete the pet by ID or errors if not found
-            const deletedUser = await User.findByIdAndDelete(req.params.id);
-            if (!deletedUser) {
-                return res.status(404).json({ message: "User not found" });
-            }
-            const users = await User.find({});
-            res.status(200).render('adminUsers', { users });
-        } catch {
-            res.status(404)
-        }
-    } catch (error) {
-        //server errors
-        res.status(500).render('404', { error });
-    }
-});
-//deletes the specified user
-const deleteUser = asyncWrapper(async (req, res) => {
-    try {
-        // Attempt to find and delete the pet by ID or errors if not found
-        const deletedUser = await User.findByIdAndDelete(req.params.id);
-        if (!deletedUser) {
-            return res.status(404).json({ message: "User not found" });
-        }
-        const users = await User.find({});
-        res.status(200).render('adminUsers', { users });
-    } catch (error) {
-        //server errors
-        res.status(500).render('404', { error });
-    }
-});
 
 //USERS
 
@@ -209,7 +164,6 @@ module.exports = {
     getUsername,
     // getPassword,
     createUser,
-    deleteUser,
     getFAQS,
     getTestimonials,
     getLogin,
@@ -219,5 +173,4 @@ module.exports = {
     getAllPets,
     createPet,
     getPet,
-    deletePetOrUser,
 };
