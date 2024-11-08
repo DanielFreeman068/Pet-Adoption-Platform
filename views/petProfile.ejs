@@ -27,5 +27,8 @@
         <p>Behavior: <%= pet.behavior %></p>
         <p>History: <%= pet.history %></p>
         <p>Owner's Contact:<a href="mailto:"><%= pet.email %></a></p>
+        <% if(pet.imageURL) { %>
+            <img src="<%= pet.imageURL %>" alt="Pet Image" width="100">
+        <% } %>
     </body>
 </html>

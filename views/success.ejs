@@ -13,5 +13,16 @@
 <body>
     <a href="/">Return Home</a>
     <header>Successfully surrendered your Pet</header>
+    <h2>Name: <%= newPet.name %></h2>
+    <h3>Breed: <%= newPet.breed %></h3>
+    <p>Age: <%= newPet.age %></p>
+    <p>Gender: <%= newPet.gender %></p>
+    <p>Description: <%= newPet.description %></p>
+    <p>Behavior: <%= newPet.behavior %></p>
+    <p>History: <%= newPet.history %></p>
+    <p>Owner's Contact:<a href="mailto:"><%= newPet.email %></a></p>
+    <% if(newPet.imageURL) { %>
+        <img src="<%= newPet.imageURL %>" alt="Pet Image" width="100">
+    <% } %>
 </body>
 </html>

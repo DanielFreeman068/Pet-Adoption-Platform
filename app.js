@@ -3,13 +3,18 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser') 
 const cookieParser = require('cookie-parser');
-
-
+const cloudinary = require('cloudinary').v2
 const connectDB = require('./db/connect'); // call database connection
 const port = process.env.PORT || 5500; // set port
 
+//cloudinary configuration
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+})
+
 const pets = require('./routes/pets'); 
-const Pet = require('./models/Pet');
 // const loginRoutes = require('./routes/login'); //
 
 //set up ejs for rendering views, use bodyparser

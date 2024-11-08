@@ -33,7 +33,11 @@ const PetSchema = new mongoose.Schema({
     history: {
         type: String,
         required: true,
-    }
+    },
+    imageURL: {
+        type: String,
+        default: ''
+    },
 },{collection:"pets"})
 
 module.exports = mongoose.model('Pet', PetSchema);

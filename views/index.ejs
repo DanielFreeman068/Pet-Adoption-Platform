@@ -42,6 +42,9 @@
                     <div class="single-pet">
                         <h5><%= pet.name %></h5>
                         <h5><%= pet.gender %></h5>
+                        <% if(pet.imageURL) { %>
+                            <img src="<%= pet.imageURL %>" alt="Pet Image" width="100">
+                        <% } %>
                         <a href="/<%= pet.id %>">View Profile</a>
                     </div>
                 <% }); %>
@@ -49,7 +52,7 @@
         <% } %>
     </section>
 
-    <form class="pet-form" method="POST">
+    <form action="/pets/create" class="pet-form" method="POST" enctype="multipart/form-data">
         <h4>Add Pets</h4>
         <div class="form-control">
             <input type="text" name="name" id="pet-input" class="pet-input" placeholder="Name of Pet" required />
@@ -64,6 +67,8 @@
             <textarea id="description-input" name="description" rows="4" cols="50" maxlength="100" placeholder="Pet Description" required></textarea>
             <textarea id="behavior-input" name="behavior" rows="4" cols="50" maxlength="100" placeholder="Pet Behavior Description" required></textarea>
             <textarea id="history-input" name="history" rows="4" cols="50" maxlength="100" placeholder="Pet History Description" required></textarea>
+            <label for="image">Upload Image</label>
+            <input type="file" name="image" id="image" accept="image/*">
             <button id="surrender" type="submit" class="btn submit-btn">Submit</button>
         </div>
     </form>
