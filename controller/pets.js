@@ -124,14 +124,6 @@ const getAllPets = asyncWrapper(async (req, res) => {
         console.error('Error:', error);
         res.status(500).send('Server error');
     }
-    try {
-        // Fetch all pets from the database and renders the index page
-        const allPets = await Pet.find({});
-        res.status(200).render('index', { allPets });
-    } catch (error) {
-        // If there's an error, return a 500 Internal Server Error status
-        res.status(500).render('404', { error });
-    }
 });
 //gets specific pet to render on separate profile
 const getPet = asyncWrapper(async (req, res) => {
