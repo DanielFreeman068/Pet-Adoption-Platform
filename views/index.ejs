@@ -33,6 +33,7 @@
         <button class="hamburger">☰</button>
     </header>
     <header>Dashboard</header>
+    <!-- filter system -->
     <div class="filter-card">
         <h3>Filter Pets</h3>
         <form id="petFilter" class="filter-form" method="GET">
@@ -92,6 +93,7 @@
             </div>
         </form>
     </div>
+    <!-- pets displayed -->
     <section class="pets-container">
         <% if (!allPets || allPets.length === 0) { %>
             <h5 class="empty-list">No Pets Available</h5>
@@ -102,7 +104,7 @@
                         <h5><%= pet.name %></h5>
                         <h5><%= pet.gender %></h5>
                         <% if(pet.imageURL) { %>
-                            <img src="<%= pet.imageURL %>" alt="Pet Image" width="100">
+                            <img src="<%= pet.imageURL %>" alt="<%= pet.name %>'s photo">
                         <% } %>
                         <a href="/<%= pet.id %>">View Profile</a>
                     </div>
@@ -110,18 +112,20 @@
             </div>
         <% } %>
     </section>
-
-    <form action="/pets/create" class="pet-form" method="POST" enctype="multipart/form-data">
-        <h4>Add Pets</h4>
+    <!-- form -->
+    <form id="surrender" action="/pets/create" class="pet-form" method="POST" enctype="multipart/form-data">
+        <h4>Surrender a Pet</h4>
         <div class="form-control">
+            <input type="email" name="email" id="email" class="pet-input" placeholder="Owner's Email" required>
             <input type="text" name="name" id="pet-input" class="pet-input" placeholder="Name of Pet" required />
+            <input type="number" name="age" id="age-input" class="pet-input" placeholder="Age of Pet" required />
             <input type="text" name="breed" id="breed-input" class="pet-input" placeholder="Breed of Pet" required />
             <select name="gender" id="gender-input" class="pet-input" required>
                 <option value="" disabled selected hidden>Choose a Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select>
-            <label for="state">State:</label>
+            
             <select id="state" name="state" required>
                 <option value="">Select a State</option>
                 <option value="AL">Alabama</option>
@@ -176,16 +180,16 @@
                 <option value="WY">Wyoming</option>
             </select>
             
-            <label for="city">City:</label>
             <input type="text" id="city" name="city" placeholder="Enter City" required>
-            <input type="email" name="email" id="email" class="pet-input" placeholder="Owner's Email" required>
-            <input type="number" name="age" id="age-input" class="pet-input" placeholder="Age of Pet" required />
+            
             <textarea id="description-input" name="description" rows="4" cols="50" maxlength="100" placeholder="Pet Description"></textarea>
             <textarea id="behavior-input" name="behavior" rows="4" cols="50" maxlength="100" placeholder="Pet Behavior Description" required></textarea>
             <textarea id="history-input" name="history" rows="4" cols="50" maxlength="100" placeholder="Pet History Description" required></textarea>
-            <label for="image">Upload Image</label>
+            
+            <label for="image">📁 Click to Upload Pet Image</label>
             <input type="file" name="image" id="image" accept="image/*">
-            <button id="surrender" type="submit" class="btn submit-btn">Submit</button>
+            
+            <button type="submit" class="btn submit-btn">Submit Pet</button>
         </div>
     </form>
     <script src="/hamburger.js"></script>
