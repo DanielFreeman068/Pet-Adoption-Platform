@@ -33,6 +33,65 @@
         <button class="hamburger">☰</button>
     </header>
     <header>Dashboard</header>
+    <div class="filter-card">
+        <h3>Filter Pets</h3>
+        <form id="petFilter" class="filter-form" method="GET">
+            <div class="filter-grid">
+                <!-- State Filter -->
+                <div class="filter-group">
+                    <label for="state">State:</label>
+                    <select name="state" id="state">
+                        <option value="">Any State</option>
+                        <% const states = [...new Set(allPets.map(pet => pet.state))].sort() %>
+                        <% states.forEach(state => { %>
+                            <option value="<%= state %>" <%= query.state === state ? 'selected' : '' %>><%= state %></option>
+                        <% }) %>
+                    </select>
+                </div>
+    
+                <!-- City Filter -->
+                <div class="filter-group">
+                    <label for="city">City:</label>
+                    <select name="city" id="city">
+                        <option value="">Any City</option>
+                        <% const cities = [...new Set(allPets.map(pet => pet.city))].sort() %>
+                        <% cities.forEach(city => { %>
+                            <option value="<%= city %>" <%= query.city === city ? 'selected' : '' %>><%= city %></option>
+                        <% }) %>
+                    </select>
+                </div>
+    
+                <!-- Breed Filter -->
+                <div class="filter-group">
+                    <label for="breed">Breed:</label>
+                    <select name="breed" id="breed">
+                        <option value="">Any Breed</option>
+                        <% const breeds = [...new Set(allPets.map(pet => pet.breed))].sort() %>
+                        <% breeds.forEach(breed => { %>
+                            <option value="<%= breed %>" <%= query.breed === breed ? 'selected' : '' %>><%= breed %></option>
+                        <% }) %>
+                    </select>
+                </div>
+    
+                <!-- Age Filter -->
+                <div class="filter-group">
+                    <label for="ageRange">Age Range:</label>
+                    <select name="ageRange" id="ageRange">
+                        <option value="">Any Age</option>
+                        <option value="0-1" <%= query.ageRange === '0-1' ? 'selected' : '' %>>Puppy/Kitten (0-1 year)</option>
+                        <option value="1-3" <%= query.ageRange === '1-3' ? 'selected' : '' %>>Young (1-3 years)</option>
+                        <option value="3-8" <%= query.ageRange === '3-8' ? 'selected' : '' %>>Adult (3-8 years)</option>
+                        <option value="8+" <%= query.ageRange === '8+' ? 'selected' : '' %>>Senior (8+ years)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="filter-actions">
+                <button type="submit" class="filter-btn">Apply Filters</button>
+                <button type="button" id="clearFilters" class="clear-btn">Clear Filters</button>
+            </div>
+        </form>
+    </div>
     <section class="pets-container">
         <% if (!allPets || allPets.length === 0) { %>
             <h5 class="empty-list">No Pets Available</h5>
@@ -62,9 +121,66 @@
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select>
+            <label for="state">State:</label>
+            <select id="state" name="state" required>
+                <option value="">Select a State</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+            </select>
+            
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" placeholder="Enter City" required>
             <input type="email" name="email" id="email" class="pet-input" placeholder="Owner's Email" required>
             <input type="number" name="age" id="age-input" class="pet-input" placeholder="Age of Pet" required />
-            <textarea id="description-input" name="description" rows="4" cols="50" maxlength="100" placeholder="Pet Description" required></textarea>
+            <textarea id="description-input" name="description" rows="4" cols="50" maxlength="100" placeholder="Pet Description"></textarea>
             <textarea id="behavior-input" name="behavior" rows="4" cols="50" maxlength="100" placeholder="Pet Behavior Description" required></textarea>
             <textarea id="history-input" name="history" rows="4" cols="50" maxlength="100" placeholder="Pet History Description" required></textarea>
             <label for="image">Upload Image</label>
@@ -73,5 +189,6 @@
         </div>
     </form>
     <script src="/hamburger.js"></script>
+    <script src="/filter.js"></script>
 </body>
 </html>

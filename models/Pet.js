@@ -8,15 +8,27 @@ const PetSchema = new mongoose.Schema({
     },
     breed: {
         type: String,
-        required: true,
+        required: [true, 'You must provide a breed'],
+        trim: true,
+        minlength: [2, 'Breed must be at least 2 characters']
     },
     gender: {
         type: String,
         required: true,
     },
+    state: {
+        type: String,
+        required: [true, 'You must provide a state']
+    },
+    city: {
+        type: String,
+        required: [true, 'You must provide a city']
+    },
     age: {
         type: Number,
-        required: true,
+        required: [true, 'You must provide an age'],
+        min: [0, 'Age cannot be less than 0'],
+        max: [30, 'Age cannot be more than 30 years']
     },
     email: {
         type: String,
@@ -24,19 +36,21 @@ const PetSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        required: true,
+        trim: true
     },
     behavior: {
         type: String,
-        required: true,
+        required: [true, 'You must provide a behavior description'],
+        trim: true
     },
     history: {
         type: String,
-        required: true,
+        trim: true
     },
     imageURL: {
         type: String,
-        default: ''
+        default: '',
+        required: [true, 'You must provide a profile picture']
     },
 },{collection:"pets"})
 

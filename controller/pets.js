@@ -5,20 +5,6 @@ const User = require("../models/login")
 const bcrypt = require('bcrypt');
 const cookieParser = require("cookie-parser")
 const loggedIn = false
-const multer = require('multer')
-const cloudinary = require('cloudinary').v2
-const {CloudinaryStorage} = require('multer-storage-cloudinary')
-
-//configure cloudinary storage for multer
-const storage = new CloudinaryStorage({
-    cloudinary: cloudinary,
-        params: {
-            folder: 'full-cloud-tasks',
-            allowed_formats: ['jpg', 'png', 'jpeg', 'gif'],
-            public_id: (req,file) => file.originalname
-        },
-})
-const upload = multer({ storage })
 
 //gets about page rendered
 const getAbout = asyncWrapper(async (req, res) => {
@@ -95,6 +81,50 @@ const getAdminDashboardUsers = asyncWrapper(async (req, res) => {
 //gets all pets to render
 const getAllPets = asyncWrapper(async (req, res) => {
     try {
+        // Get all pets from database
+        let pets = await Pet.find({});
+        
+        // Get query parameters
+        const { state, city, breed, ageRange } = req.query;
+        
+        // Apply filters
+        if (state || city || breed || ageRange) {
+            pets = pets.filter(pet => {
+                // State filter
+                if (state && pet.state !== state) return false;
+                
+                // City filter
+                if (city && pet.city !== city) return false;
+                
+                // Breed filter
+                if (breed && pet.breed !== breed) return false;
+                
+                // Age range filter
+                if (ageRange) {
+                    const [min, max] = ageRange.split('-');
+                    const petAge = parseInt(pet.age);
+                    
+                    if (max === '+') {
+                        if (petAge < parseInt(min)) return false;
+                    } else {
+                        if (petAge < parseInt(min) || petAge > parseInt(max)) return false;
+                    }
+                }
+                
+                return true;
+            });
+        }
+        
+        // Render the page with filtered pets and current query parameters
+        res.render('index', {
+            allPets: pets,
+            query: req.query
+        });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Server error');
+    }
+    try {
         // Fetch all pets from the database and renders the index page
         const allPets = await Pet.find({});
         res.status(200).render('index', { allPets });
@@ -103,17 +133,6 @@ const getAllPets = asyncWrapper(async (req, res) => {
         res.status(500).render('404', { error });
     }
 });
-// //creates pet
-// const createPet = asyncWrapper(async (req, res) => {
-//     try {
-//         //creates pet and renders updated page
-//         const newPet = await Pet.create(req.body);
-//         res.status(201).render('success', { newPet });
-//     } catch (error) {
-//         // If there's a validation error or any other issue, return a 400 Bad Request status
-//         res.status(400).render('404', { error });
-//     }
-// });
 //gets specific pet to render on separate profile
 const getPet = asyncWrapper(async (req, res) => {
     try {

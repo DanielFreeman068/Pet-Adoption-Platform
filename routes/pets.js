@@ -22,7 +22,6 @@ const {
     getUsername,
     // getPassword,
     createUser,
-    createPet,
     getPet,
     getAllPets,
     getSuccess,
@@ -47,9 +46,9 @@ router.route('/:id').get(getPet);
 // Create pet route
 router.post('/pets/create', upload.single('image'), asyncWrapper(async (req, res) => {
     try {
-        const { name, breed, gender, email, age, description, behavior, history } = req.body
+        const { name, breed, gender, state, city, email, age, description, behavior, history } = req.body
         const imageURL = req.file ? req.file.path : null
-        const newPet = new Pet({ name, breed, gender, email, age, description, behavior, history, imageURL })
+        const newPet = new Pet({ name, breed, gender, state, city, email, age, description, behavior, history, imageURL })
         await newPet.save()
         // Render the success page with the new pet's data
         res.status(201).render('success', { newPet });
