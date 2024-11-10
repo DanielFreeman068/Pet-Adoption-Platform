@@ -28,11 +28,10 @@ html body header {
     display: flex;
     border-bottom: 1px solid black;
     margin-bottom: 5vh;
+    font-family: var(--headingFont);
 }
 html body header img {
-    position: fixed;
-    right: 84%;
-    top: 1.5%;
+    margin: auto;
     display: flex;
     width: 12vw;
     height: 12vw;
@@ -41,22 +40,28 @@ header h1{
     display: flex;
     margin: auto;
     font-size: 6vw;
+    width: 60%;
+    justify-content: center;
+    margin-right: 20%;
 }
 main{
     width: 90%;
     margin: auto;
+    margin-bottom: 4vw;
 }
 .box{
     padding: 3rem 3rem 2rem 3rem;
     justify-content: center;
     width: 85%;
     margin: auto;
+    font-family: var(--bodyFont);
 }
 .box-head{
     display: flex;
     justify-content: space-between;
     width: 98%;
     margin-left: 1%;
+    font-family: var(--headingFont);
 }
 .title{
     font-size: 250%;
@@ -78,7 +83,6 @@ footer{
     height: 62vh;
     width: auto;
     overflow: hidden;
-    font-family: var(--bodyFont);
 }
 .fcont{
     width: 75%;
@@ -90,12 +94,10 @@ footer{
 .fhead{
     font-size: 4vw;
     margin-bottom: 2vh;
-}
-.flogo{
     display: flex;
     justify-content: space-between;
 }
-.flogo img{
+.fhead img{
     width: 24vw;
     height: 24vw;
     border-radius: 50%;
@@ -103,11 +105,14 @@ footer{
 .ftxt{
     text-align: center;
     align-content: center;
+    font-size: 5vw;
+    font-family: var(--headingFont);
 }
 .links{
     margin-top: 1vh;
 }
 .links h1{
+    font-family: var(--headingFont);
     font-size: 7vw;
     margin: auto;
     padding-bottom: 1vh;
@@ -118,6 +123,7 @@ footer{
     margin-bottom: 1vh;
 }
 .links h3{
+    font-family: var(--bodyFont);
     font-size: 4vw;
     margin: auto;
     display: flex;
@@ -126,7 +132,7 @@ footer{
 }
 .socials{
     margin-top: 4vh;
-    font-family: var(--bodyFont);
+    font-family: var(--headingFont);
 }
 .socialtxt{
     font-size: 7vw;
@@ -150,4 +156,94 @@ footer{
     bottom: 0%;
     font-size: 3vw;
     text-align: center;
+    font-family: var(--smallText);
+}
+
+@media (orientation: landscape) {
+    html body header h1{
+        font-size: 4vw;
+        width: 80%;
+        margin-right: 10%;
+    }
+    html body header img{
+        width: 4vw;
+        height: 4vw;
+    }
+    html body main{
+        width: 80%;
+    }
+    .box{
+        width: 90%;
+        display: flex;
+        padding-bottom: 5rem;
+    }
+    .box .text{
+        font-size: 1vw;
+        width: 48%;
+        padding-left: 2%;
+    }
+    .image{
+        width: 50%;
+        height: 30vh;
+    }
+    .box-head{
+        padding: 3vh 0 5vh 0;
+    }
+    .box2{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+    }
+    .box2 .image{
+        grid-column: 2/3;
+        grid-row: 1;
+        width: 100%;
+    }
+    .box2 .text{
+        grid-column: 1/2;
+        grid-row: 1;
+        width: 96%;
+    }
+    footer{
+        height: 40vh;
+    }
+    .fcont{
+        display: flex;
+        height: 100%;
+        flex-direction: row;
+        width: 80%;
+    }
+    .fhead{
+        width: 33%;
+        display: flex;
+        flex-direction: column;
+        height: 35vh;
+    }
+    .ftxt{
+        font-size: 2vw;
+
+    }
+    .fhead img{
+        margin: auto;
+        height: 14vw;
+        width: 14vw;
+    }
+    .links{
+        width: 33%;
+    }
+    .links h1{
+        font-size: 3vw;
+    }
+    .links h3{
+        font-size: 2vw;
+    }
+    .socials{
+        width: 33%;
+    }
+    .socialtxt{
+        font-size: 3vw;
+    }
+    .foot{
+        font-size: 1vw;
+    }
 }
