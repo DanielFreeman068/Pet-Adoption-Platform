@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-:root {
+:root { 
   /* CSS HSL */
   --honey: #f6d110;
   --butter: #fff9c7;
@@ -16,7 +16,8 @@
   --smallText: 0.7em;
 }
 
-html {
+/* html and body styling */
+html { 
   width: 100%;
   height: 100%;
   margin: 0;
@@ -26,7 +27,7 @@ html body {
   background-color: var(--sky);
   overflow: hidden;
 }
-html body .header {
+html body .header { /* header logo stying */
   height: 10vh;
   width: 100%;
   margin: auto;
@@ -42,7 +43,7 @@ html body .header img {
   width: 20vw;
   height: 12vw;
 }
-html body .container {
+html body .container { /* login card styling */
   width: 75vw;
   height: 85vw;
   display: flex;
@@ -124,6 +125,8 @@ html body .container .login-card .form-group .check input:hover {
 html body .container .login-card .form-group .check div {
   font-family: var(--bodyFont);
 }
+
+/* FOoter styling */
 html body footer {
   width: 100%;
   border-top: black solid 1px;
@@ -135,6 +138,7 @@ html body footer {
   padding-top: 4px;
 }
 
+/* desktop styling with media query */
 @media (orientation: landscape) {
   html body .header {
     margin-bottom: 5vh;

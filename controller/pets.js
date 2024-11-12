@@ -3,6 +3,7 @@ const Pet = require('../models/Pet');
 const asyncWrapper = require('../middleware/async');
 const User = require("../models/login")
 const bcrypt = require('bcrypt');
+// CookieParser
 const cookieParser = require("cookie-parser")
 var loggedIn = false
 
@@ -49,7 +50,7 @@ const getSuccess = asyncWrapper(async (req, res) => {
 //gets login page rendered
 const getLogin = asyncWrapper(async (req, res) => {
     try {
-        // Render the login page successfully
+        // if loggedIn is true, redirect to main page
         if(loggedIn) {
             res.redirect('/')
         }else{
@@ -152,22 +153,22 @@ const getAllUsers = asyncWrapper(async (req, res) => { // get all users from the
 })
 const getUsername = asyncWrapper(async (req, res) => { // get username funcr
     try{
-        const check = await User.findOne({username: req.body.username});
+        const check = await User.findOne({username: req.body.username}); //find if username exists
         if(!check){
             return res.send("<script>alert('Username Not Found'); window.location.href = '/login'; </script>").status(404) // return custom error message if user not found
         }
-        const passMatch = await bcrypt.compare(req.body.password, check.password);
-        if(passMatch){
+        const passMatch = await bcrypt.compare(req.body.password, check.password); //compare username to its respective password through bcrypt
+        if(passMatch){ //if it matches, set the cookie to expire after 10 days
             res.cookie("loggedIn", true, {maxAge: 7 * 24 * 60 * 60 * 1000})
             res.cookie("username", "req.body.username", {maxAge: 7 * 24 * 60 * 60 *1000});
-            loggedIn = req.cookies.loggedIn;
-            res.redirect("/")
+            loggedIn = req.cookies.loggedIn; 
+            res.redirect("/") // send user to home pafe
         }else{
             return res.send("<script>alert('Incorrect Password'); window.location.href = '/login'; </script>").status(404) // return custom error message if password is incorrect
         }
 
     }catch{
-        return res.send("<script>alert('Incorrect credentials'); window.location.href = '/login'; </script>").status(404) // return alert error message if wrong details
+        return res.send("<script>alert('Error Caught'); window.location.href = '/login'; </script>").status(404) // return alert error message if wrong details
     }
 })
 
@@ -185,6 +186,7 @@ const createUser = asyncWrapper(async (req, res) => { // create user func
 
     return res.send("<script>alert('User Created Successfully'); window.location.href = '/login'; </script>").status(200)
 })
+// export all necessary routes
 module.exports = {
     getAbout,
     getAllUsers,
