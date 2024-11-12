@@ -33,10 +33,9 @@
                     <div class="pets-grid">
                         <% users.forEach(function(user) { %>
                             <div class="pet-card">
-                                <div class="pet-info">
+                                <div class="user-info">
                                     <div class="pet-header">
                                         <h3 class="pet-name"><%= user.username %></h3>
-                                        <span class="pet-id">ID: <%= user.id %></span>
                                     </div>
                                     <form method="post" action="/users/delete/<%= user.id %>">
                                         <button type="submit" class="delete-btn">

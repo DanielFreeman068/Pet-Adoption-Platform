@@ -776,6 +776,10 @@ header {
     padding: 1rem;
 }
 
+.user-info {
+    padding:2rem;
+}
+
 .pet-header {
     display: flex;
     justify-content: space-between;
