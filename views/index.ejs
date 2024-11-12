@@ -19,20 +19,18 @@
             <a href="/">Home</a>
             <a href="/testimonials">Testimonials</a>
             <a href="/about">About</a>
-            <a href="/#surrender">Surrender Pet</a>
+            <a href="javascript:void(0);" onclick="document.getElementById('surrender').scrollIntoView();">Surrender Pet</a>
         </div>
     </div>
     <header class="header">
-        <!-- Temp Text Logo -->
+        <!-- Logo -->
         <div class="logo">
-            <!-- <img src="#" alt="Fido Logo" /> -->
-            <span class="logo-text">
-                <span class="logo-b">Fido</span>
-            </span>
+            <img src="./assets/fido_logo.png" alt="Fido Logo"/>
         </div>
         <button class="hamburger">☰</button>
     </header>
-    <header>Dashboard</header>
+        <img class="doge" src="./assets/doggrass.png" alt="dog">
+        <img class="dog" src="./assets/doggrass.png" alt="dog">
     <!-- filter system -->
     <div class="filter-card">
         <h3>Filter Pets</h3>
@@ -192,6 +190,7 @@
             <button type="submit" class="btn submit-btn">Submit Pet</button>
         </div>
     </form>
+    <h1 style="text-align: center;">Fido</h1>
     <script src="/hamburger.js"></script>
     <script src="/filter.js"></script>
 </body>
