@@ -20,6 +20,9 @@ const upload = multer({ storage })
 
 // Import the necessary controller functions for the routes`
 const {
+    createUser,
+    getUsername,
+    getAllUsers,
     getPet,
     getAllPets,
     getSuccess,
@@ -37,10 +40,10 @@ router.route('/about').get(getAbout);
 router.route('/FAQ').get(getFAQS);
 router.route('/testimonials').get(getTestimonials);
 router.route('/success').get(getSuccess);
-router.route('/:id').get(getPet);
 router.route('/').get(getAllPets);
 router.route('/adminPets').get(getAdminDashboardPets);
 router.route('/adminUsers').get(getAdminDashboardUsers)
+router.route('/:id').get(getPet);
 
 // Create pet route
 router.post('/pets/create', upload.single('image'), asyncWrapper(async (req, res) => {

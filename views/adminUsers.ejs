@@ -17,29 +17,75 @@
     <title>Pet Adoption Platform || Admin</title>
 </head>
     <body>
-        <a href="/adminPets">Go to Pets</a>
-        <header>Users</header>
-        <div class="pets">
-            <% if (!users || users.length === 0) { %>
-                <h5 class="empty-list">No Users Available</h5>
-            <% } else { %>
-                <div class="pets">
-                    <% users.forEach(function(user) { %>
-                        <div class="single-pet">
-                            <h5><%= user.id %></h5>
-                            <h5><%= user.username %></h5>
-                            <form method="post" action="/users/delete/<%= user.id %>">
-                                <div class="pet-links">
-                                    <button type="submit" class="delete-btn">
-                                    <i class="fas fa-trash"></i>
-                                    </button>
+        <a href="/adminPets" class="home-link">
+            <i class="fas fa-arrow-left"></i>
+            Return to Pets
+        </a>
+        <main>
+            <header>
+                <h2 class="page-title">Pets</h2>
+            </header>
+    
+            <section class="pets-container">
+                <% if (!users || users.length === 0) { %>
+                    <h5 class="empty-list">No Users Available</h5>
+                <% } else { %>
+                    <div class="pets-grid">
+                        <% users.forEach(function(user) { %>
+                            <div class="pet-card">
+                                <div class="pet-info">
+                                    <div class="pet-header">
+                                        <h3 class="pet-name"><%= user.username %></h3>
+                                        <span class="pet-id">ID: <%= user.id %></span>
+                                    </div>
+                                    <form method="post" action="/users/delete/<%= user.id %>">
+                                        <button type="submit" class="delete-btn">
+                                            <i class="fas fa-trash"></i>
+                                            <span>Delete User</span>
+                                        </button>
+                                    </form>
                                 </div>
-                            </form>
-                        </div>
-                    <% }); %>
+                            </div>
+                        <% }); %>
+                    </div>
+                <% } %>
+            </section>
+        </main>
+        <footer>
+            <div class="fcont">
+                <div class="fhead">
+                    <img src="./assets/fido_logo.png" alt="Fido Logo"/>
+                    <div class="ftxt">
+                        123 West Streetington <br> Arizona 85308
+                    </div>
                 </div>
-            <% } %>
-        </div>
-        </section>
+                <div class="links">
+                    <h1>Website Links</h1>
+                    <h3><a href="/">Home Page</a></h3>
+                    <h3><a href="/testimonials">Testimonials</a></h3>
+                    <h3><a href="/FAQ">FAQ</a></h3>
+                    <h3><a href="/about">About Us</a></h3>
+                </div>
+                <div class="socials">
+                    <h1 class="socialtxt">
+                        Social Media
+                    </h1>
+                    <div class="social-imgs">
+                        <a href="https://www.instagram.com/">
+                            <img src="./assets/insta logo.png" alt="Instagram">
+                        </a>
+                        <a href="https://x.com/?lang=en">
+                            <img src="./assets/twit logo.png" alt="Twitter">
+                        </a>
+                        <a href="https://www.youtube.com/">
+                            <img src="./assets/yt logo.png" alt="YouTube">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="foot">
+                All Rights Reserved | ©2024 Fido 
+            </div>
+        </footer>
     </body>
 </html>
