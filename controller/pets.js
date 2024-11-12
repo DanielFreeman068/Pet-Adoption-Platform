@@ -4,7 +4,7 @@ const asyncWrapper = require('../middleware/async');
 const User = require("../models/login")
 const bcrypt = require('bcrypt');
 const cookieParser = require("cookie-parser")
-const loggedIn = false
+var loggedIn = false
 
 //gets about page rendered
 const getAbout = asyncWrapper(async (req, res) => {
@@ -50,7 +50,11 @@ const getSuccess = asyncWrapper(async (req, res) => {
 const getLogin = asyncWrapper(async (req, res) => {
     try {
         // Render the login page successfully
-        res.status(200).render('login');
+        if(loggedIn) {
+            res.redirect('/')
+        }else{
+            res.status(200).render('login');
+        }
     } catch (error) {
         // In case of an error, return a 500 Internal Server Error status
         res.status(500).render('404', { error });
@@ -146,7 +150,6 @@ const getAllUsers = asyncWrapper(async (req, res) => { // get all users from the
     const users = await User.find({}); // use empty params to pull all users
     res.status(200).json({users});
 })
-
 const getUsername = asyncWrapper(async (req, res) => { // get username funcr
     try{
         const check = await User.findOne({username: req.body.username});
@@ -155,10 +158,10 @@ const getUsername = asyncWrapper(async (req, res) => { // get username funcr
         }
         const passMatch = await bcrypt.compare(req.body.password, check.password);
         if(passMatch){
-            // const allPets = await Pet.find({});  
             res.cookie("loggedIn", true, {maxAge: 7 * 24 * 60 * 60 * 1000})
             res.cookie("username", "req.body.username", {maxAge: 7 * 24 * 60 * 60 *1000});
-            res.redirect('/');
+            loggedIn = req.cookies.loggedIn;
+            res.redirect("/")
         }else{
             return res.send("<script>alert('Incorrect Password'); window.location.href = '/login'; </script>").status(404) // return custom error message if password is incorrect
         }

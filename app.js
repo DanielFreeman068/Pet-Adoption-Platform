@@ -6,6 +6,8 @@ const cookieParser = require('cookie-parser');
 const cloudinary = require('cloudinary').v2
 const connectDB = require('./db/connect'); // call database connection
 const port = process.env.PORT || 5500; // set port
+app.use(cookieParser())
+
 
 //cloudinary configuration
 cloudinary.config({
@@ -22,7 +24,6 @@ app.set('view engine', 'ejs');
 app.set("views", path.join(__dirname, '/views'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cookieParser("password"))
 app.use('/', pets)
 
 //initiate server
