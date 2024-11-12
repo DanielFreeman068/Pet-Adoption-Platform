@@ -17,33 +17,46 @@
     <title>Pet Adoption Platform || Admin</title>
 </head>
     <body>
-        <a href="/adminUsers">Go to Users</a>
-        <header>Pets</header>
-        <section class="pets-container">
-        <div class="pets">
-            <% if (!allPets || allPets.length === 0) { %>
-                <h5 class="empty-list">No Pets Available</h5>
-            <% } else { %>
-                <div class="pets">
-                    <% allPets.forEach(function(pet) { %>
-                        <div class="single-pet">
-                            <h5><%= pet.id %></h5>
-                            <h5><%= pet.name %></h5>
-                            <% if(pet.imageURL) { %>
-                                <img src="<%= pet.imageURL %>" alt="Pet Image" width="100">
-                            <% } %>
-                            <form method="post" action="/pets/delete/<%= pet.id %>">
-                                <div class="pet-links">
-                                    <button type="submit" class="delete-btn">
-                                    <i class="fas fa-trash"></i>
-                                    </button>
+        <a href="/adminUsers" class="home-link">
+            <i class="fas fa-arrow-left"></i>
+            Return to Users
+        </a>
+        <main>
+            <header>
+                <h2 class="page-title">Pets</h2>
+            </header>
+    
+            <section class="pets-container">
+                <% if (!allPets || allPets.length === 0) { %>
+                    <h5 class="empty-list">No Pets Available</h5>
+                <% } else { %>
+                    <div class="pets-grid">
+                        <% allPets.forEach(function(pet) { %>
+                            <div class="pet-card">
+                                <% if(pet.imageURL) { %>
+                                    <img 
+                                        src="<%= pet.imageURL %>" 
+                                        alt="<%= pet.name %>"
+                                        class="pet-image"
+                                    >
+                                <% } %>
+                                <div class="pet-info">
+                                    <div class="pet-header">
+                                        <h3 class="pet-name"><%= pet.name %></h3>
+                                        <span class="pet-id">ID: <%= pet.id %></span>
+                                    </div>
+                                    <form method="post" action="/pets/delete/<%= pet.id %>">
+                                        <button type="submit" class="delete-btn">
+                                            <i class="fas fa-trash"></i>
+                                            <span>Delete Pet</span>
+                                        </button>
+                                    </form>
                                 </div>
-                            </form>
-                        </div>
-                    <% }); %>
-                </div>
-            <% } %>
-        </div>
-        </section>
+                            </div>
+                        <% }); %>
+                    </div>
+                <% } %>
+            </section>
+        </main>
     </body>
 </html>

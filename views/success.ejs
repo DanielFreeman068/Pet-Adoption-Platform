@@ -8,23 +8,50 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
     <link rel="stylesheet" href="/normalize.css" />
     <link rel="stylesheet" href="/styles.css" />
-    <title>Pet Adoption Platform || Home</title>
+    <title>Pet Adoption Platform || Success</title>
 </head>
 <body>
-    <a href="/">Return Home</a>
-    <header>Successfully surrendered your Pet</header>
-    <h2>Name: <%= newPet.name %></h2>
-    <h3>Breed: <%= newPet.breed %></h3>
-    <p>Age: <%= newPet.age %></p>
-    <p>Gender: <%= newPet.gender %></p>
-    <p>State: <%= newPet.state %></p>
-    <p>City: <%= newPet.city %></p>
-    <p>Description: <%= newPet.description %></p>
-    <p>Behavior: <%= newPet.behavior %></p>
-    <p>History: <%= newPet.history %></p>
-    <p>Owner's Contact:<a href="mailto:"><%= newPet.email %></a></p>
-    <% if(newPet.imageURL) { %>
-        <img src="<%= newPet.imageURL %>" alt="Pet Image" width="100">
-    <% } %>
+    <a href="/" class="home-link">
+        <i class="fas fa-arrow-left"></i>
+        Return Home
+    </a>
+    
+    <header class="successHeader">Successfully Surrendered Your Pet</header>
+    
+    <div class="pet-info">
+        <% if(newPet.imageURL) { %>
+            <div class="pet-image-container">
+                <img src="<%= newPet.imageURL %>" alt="Pet Image" class="pet-image">
+            </div>
+        <% } %>
+        <h2 class="pet-name"><%= newPet.name %></h2>
+        <h3 class="pet-breed"><%= newPet.breed %></h3>
+        
+        <div class="pet-details">
+            <div class="detail-item">
+                <div class="detail-label">Age</div>
+                <div><%= newPet.age %></div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-label">Gender</div>
+                <div><%= newPet.gender %></div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-label">Location</div>
+                <div><%= newPet.city %>, <%= newPet.state %></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pet-description">
+        <div class="detail-label">About</div>
+        <p><%= newPet.description %></p>
+        
+        <div class="detail-label">Behavior</div>
+        <p><%= newPet.behavior %></p>
+        
+        <div class="detail-label">History</div>
+        <p><%= newPet.history %></p>
+    </div>
 </body>
 </html>
