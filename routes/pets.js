@@ -31,7 +31,8 @@ const {
     getAdminDashboardUsers,
 } = require('../controller/pets');
 //routes to render pages
-router.route('/login').get(getLogin);
+router.route('/login').get(getLogin).post(getUsername)
+router.route("/signup").post(createUser)
 router.route('/about').get(getAbout);
 router.route('/FAQ').get(getFAQS);
 router.route('/testimonials').get(getTestimonials);
