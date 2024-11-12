@@ -1,11 +1,13 @@
-const express = require('express'); // import libaries
+// import libaries
+const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser') 
 const cookieParser = require('cookie-parser');
 const cloudinary = require('cloudinary').v2
-const connectDB = require('./db/connect'); // call database connection
-const port = process.env.PORT || 5500; // set port
+const connectDB = require('./db/connect');
+const port = process.env.PORT || 5500;
+const pets = require('./routes/pets'); 
 
 //cloudinary configuration
 cloudinary.config({
@@ -13,9 +15,6 @@ cloudinary.config({
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET
 })
-
-const pets = require('./routes/pets'); 
-// const loginRoutes = require('./routes/login'); //
 
 //set up ejs for rendering views, use bodyparser
 app.set('view engine', 'ejs');

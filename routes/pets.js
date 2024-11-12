@@ -17,10 +17,9 @@ const storage = new CloudinaryStorage({
         },
 })
 const upload = multer({ storage })
+
+// Import the necessary controller functions for the routes`
 const {
-    getAllUsers,
-    getUsername,
-    createUser,
     getPet,
     getAllPets,
     getSuccess,
@@ -37,11 +36,11 @@ router.route('/about').get(getAbout);
 router.route('/FAQ').get(getFAQS);
 router.route('/testimonials').get(getTestimonials);
 router.route('/success').get(getSuccess);
-//routes to render and deal with posts
+router.route('/:id').get(getPet);
 router.route('/').get(getAllPets);
 router.route('/adminPets').get(getAdminDashboardPets);
 router.route('/adminUsers').get(getAdminDashboardUsers)
-router.route('/:id').get(getPet);
+
 // Create pet route
 router.post('/pets/create', upload.single('image'), asyncWrapper(async (req, res) => {
     try {
@@ -56,6 +55,7 @@ router.post('/pets/create', upload.single('image'), asyncWrapper(async (req, res
         res.status(400).render('404', { error });
     }
 }));
+
 //deletes pet and re renders admin pets
 router.post('/pets/delete/:id', async (req, res) => {
     const petId = req.params.id;
@@ -69,6 +69,7 @@ router.post('/pets/delete/:id', async (req, res) => {
         res.status(500).render('404', { error });
     }
 });
+
 //deletes user and re renders admin users
 router.post('/users/delete/:id', async (req, res) => {
     const userId = req.params.id;

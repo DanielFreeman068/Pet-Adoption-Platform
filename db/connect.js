@@ -1,3 +1,4 @@
+// connects your .env file to your mongodb
 require('dotenv').config();
 const mongoose = require('mongoose');
 
@@ -6,5 +7,3 @@ const connectDB = () => {
 }
 
 module.exports = connectDB;
-
-// all reuseable code

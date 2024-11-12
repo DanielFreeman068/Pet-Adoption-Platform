@@ -26,6 +26,14 @@ html {
     font-size: 112.5%;
     scroll-behavior: smooth;
 }
+.error-body {
+    font-family: "SUSE", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 1.75;
+    background: var(--darkblu);
+}
 body {
     font-family: "SUSE", sans-serif;
     font-optical-sizing: auto;
@@ -536,6 +544,14 @@ textarea + textarea {
     margin-bottom: 1.5rem;
 }
 
+.error-info {
+    background-color: #F5F7FA;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin:0 auto 1.5rem auto;
+    max-width: 800px;
+}
+
 .pet-name {
     font-size: 2rem;
     margin: 0 0 1rem 0;
@@ -647,6 +663,11 @@ footer {
     font-size: 1.25rem;
     margin-bottom: 1rem;
     color: #fff;
+}
+
+.socials a img {
+    height:50px;
+    width: 50px;
 }
 
 .links h3 {

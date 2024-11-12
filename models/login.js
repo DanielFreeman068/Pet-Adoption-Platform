@@ -1,3 +1,4 @@
+//login and signup for users schema
 const mongoose = require('mongoose') // pull mongoose for schema creation 
 
 const loginSchema = new mongoose.Schema({ // create login schema
