@@ -34,6 +34,8 @@ body {
     line-height: 1.75;
     background: linear-gradient(to bottom, var(--darkblu), var(--bluee));
 }
+
+/* styles for header */
 header{
     font-size: 3rem;
     text-align: center;
@@ -89,7 +91,7 @@ a {
     visibility: hidden;
 }
 
-
+/* Styles for main content */
 main{
     width: 90%;
     margin: auto;
@@ -290,6 +292,8 @@ footer {
     color: #ccc;
     font-size: 0.9rem;
 }
+
+/* MEDIA QUERIES STYLING */
 @media (max-width: 768px) {
     .fcont {
         grid-template-columns: 1fr;

@@ -21,7 +21,7 @@ box-sizing: border-box;
 }
 
 
-/* general styling */
+/* general header and body styling */
 html {
     font-size: 112.5%;
     scroll-behavior: smooth;
@@ -164,13 +164,14 @@ a {
     box-sizing: border-box;
 }
 
+//
 .faq-container {
     width: 90%;
     max-width: 720px;
     background-color: var(--bluee);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    padding: 20px;
+    padding: 1rem;
     margin: auto;
     justify-content: center;
     margin-top: 16vh;
