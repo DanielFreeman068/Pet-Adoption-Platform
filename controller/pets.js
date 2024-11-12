@@ -20,7 +20,7 @@ const getAbout = asyncWrapper(async (req, res) => {
 const getFAQS = asyncWrapper(async (req, res) => {
     try {
         // Render the faqs page successfully
-        res.status(200).render('FAQS');
+        res.status(200).render('FAQ');
     } catch (error) {
         // In case of an error, return a 500 Internal Server Error status
         res.status(500).render('404', { error });
@@ -186,7 +186,6 @@ module.exports = {
     getAbout,
     getAllUsers,
     getUsername,
-    // getPassword,
     createUser,
     getFAQS,
     getTestimonials,

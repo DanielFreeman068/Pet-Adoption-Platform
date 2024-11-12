@@ -4,11 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
     <link rel="stylesheet" href="/normalize.css" />
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/faq.css" />
     <title>Pet Adoption Platform || Home</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script src="/hamburger.js"></script>
+    <script src="/faq.js"></script>
 </head>
 <body>
     <!-- Collapsed Sidepanel -->
@@ -19,20 +23,107 @@
             <a href="/">Home</a>
             <a href="/testimonials">Testimonials</a>
             <a href="/about">About</a>
-            <a href="/#surrender">Surrender Pet</a>
+            <a href="javascript:void(0);" onclick="document.getElementById('surrender').scrollIntoView();">Surrender Pet</a>
         </div>
     </div>
     <header class="header">
-        <!-- Temp Text Logo -->
+        <!-- Logo -->
         <div class="logo">
-            <!-- <img src="#" alt="Fido Logo" /> -->
-            <span class="logo-text">
-                <span class="logo-b">Fido</span>
-            </span>
+            <img src="./assets/fido_logo.png" alt="Fido Logo"/>
         </div>
         <button class="hamburger">☰</button>
     </header>
-    <header>FAQS</header>
-    <script src="/hamburger.js"></script>
+    <div class="faq-container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>How much does it cost to adopt?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>At Fido we offer a wide variety of pets free of charge! However, some may require a small fee to adopt.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>What should I bring to adopt a pet?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Adopters must show proof of residency and a valid photo ID. We confirm that all pets will have a home before being adopted!</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Can I return a pet?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Yes, we allow a 14 day testing period with our pets! If they dont workout, you may return them free of charge!</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Can I put up my pet for adoption at Fido?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Fido accepts dogs, cats, and some other pets for a small varying fee, typically under 100$!</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Are you pets vaccinated and safe?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Yes, all Fido pets are up to date on vaccinations, and are not available for adoption if they are deemed aggressive or dangerous.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Can my pet be delivered?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>No, delivery through postal or mail are impossible. If you lack transportation our staff team can work something out for you!</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="fcont">
+            <div class="fhead">
+                <img src="./assets/filler logo.jpg" alt="logo">
+                <div class="ftxt">
+                    123 West Streetington <br> Arizona 85308
+                </div>
+            </div>
+            <div class="links">
+                <h1>Website Links</h1>
+                <h3><a href="http://localhost:5500/">Home Page</a></h3>
+                <h3><a href="http://localhost:5500/login">Login & SignUp</a></h3>
+                <h3><a href="http://localhost:5500/faq">FAQ</a></h3>
+            </div>
+            <div class="socials">
+                <h1 class="socialtxt">
+                    Social Media
+                </h1>
+                <div class="social-imgs">
+                    <a href="https://www.instagram.com/">
+                        <img src="./assets/insta logo.png" alt="Insta logo">
+                    </a>
+                    <a href="https://x.com/?lang=en">
+                        <img src="./assets/twit logo.png" alt="Twitter logo">
+                    </a>
+                    <a href="https://www.youtube.com/">
+                        <img src="./assets/yt logo.png" alt="Youtube Logo">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="foot">
+            All Rights Reserved | ©2024 Adopt-A-Pet Ltd 
+        </div>
+    </footer>
 </body>
 </html>
