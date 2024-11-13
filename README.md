@@ -41,6 +41,11 @@ and, postcss.
 
 ## Usage
 
+#### Admin 
+```bash
+  localhost:5000/adminPets
+```
+
 #### Login page route code example
 ```
 const getLogin = asyncWrapper(async (req, res) => {
