@@ -634,7 +634,7 @@ footer {
 }
 
 .fcont {
-    max-width: 1200px;
+    width: 80vw;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -649,30 +649,42 @@ footer {
 }
 
 .fhead img {
-    max-width: 150px;
+    width: 14vw;
     height: auto;
+    justify-content: center;
+    display: flex;
+    margin: 0 auto;
 }
 
 .ftxt {
     color: #ccc;
     line-height: 1.6;
+    justify-content: center;
+    display: flex;
+}
+
+.socials{
+    justify-content: center;
 }
 
 .links h1, 
 .socials h1 {
-    font-size: 1.25rem;
+    font-size: 3vw;
     margin-bottom: 1rem;
     color: #fff;
+    text-align: center;
 }
 
 .socials a img {
-    height:50px;
-    width: 50px;
+    height: 5vw;
+    width: 5vw;
 }
 
 .links h3 {
     margin: 0.5rem 0;
     font-weight: normal;
+    font-size: 1.8vw;
+    text-align: center;
 }
 
 .links a {
@@ -689,6 +701,7 @@ footer {
     display: flex;
     gap: 1.5rem;
     margin-top: 1rem;
+    justify-content: center;
 }
 
 .social-imgs a {
