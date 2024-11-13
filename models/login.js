@@ -15,7 +15,7 @@ const loginSchema = new mongoose.Schema({ // create login schema
         minlength: [6, "Atleast 6 charachters."],
         maxlength: [100, "No more than 100 characters."],
     },
-    admin:{
+    isAdmin:{
         type: Boolean,
         default: false,
     }
