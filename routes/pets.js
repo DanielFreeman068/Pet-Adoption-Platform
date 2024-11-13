@@ -22,7 +22,6 @@ const upload = multer({ storage })
 const {
     createUser,
     getUsername,
-    getAllUsers,
     getPet,
     getAllPets,
     getSuccess,

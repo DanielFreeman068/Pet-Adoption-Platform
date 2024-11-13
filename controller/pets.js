@@ -3,8 +3,6 @@ const Pet = require('../models/Pet');
 const asyncWrapper = require('../middleware/async');
 const User = require("../models/login")
 const bcrypt = require('bcrypt');
-// CookieParser
-const cookieParser = require("cookie-parser")
 var loggedIn = false
 
 //gets about page rendered
