@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- favicon -->
     <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
-    <!-- FIND A FAVICON -->
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
     <!-- main css -->
-    <link rel="stylesheet" href="./testimonials.css" />
-    <title>Testimonials</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Pet Adopton Platform || Testimonials</title>
     <!-- normalize css -->
     <link rel="stylesheet" href="./normalize.css" />
     <!-- JQUERY -->
@@ -37,44 +36,77 @@
         <button class="hamburger">☰</button>
     </header>
     <!-- main content -->
-    <main>
-        <div class="box1 box">
-            <img class="image" src="./assets/warren and daniel.jpg" alt="Warren the dog">
-            <div class="text">
-                    <div class="box-head">
-                        <div class="title">Warren</div>
-                        <div class="slogan">"The Perfect Dog"</div>
-                    </div>
-                <div class="desc">
-                    “Adopting Warren was one of the best decisions I've ever made; he's not only the perfect companion but has brought so much joy and energy into my life.”  -Daniel
+    <section class="hero">
+        <h1>Success Stories</h1>
+        <p>Hear from families who found their perfect companion through our platform</p>
+    </section>
+    <div class="testimonials-grid">
+        <div class="testimonial-card featured-testimonial">
+            <div class="testimonial-header">
+                <img src="./assets/girlWdog.jpg" alt="Sarah and Max" class="testimonial-image">
+                <div class="testimonial-info">
+                    <h3>Sarah Anderson</h3>
+                    <span class="pet-name">with Max</span>
                 </div>
             </div>
-        </div>
-        <div class="box2 box">
-            <img class="image" src="./assets/melissa with biscuit.jpeg" alt="Biscuit the dog">
-            <div class="text">
-                <div class="box-head">
-                    <div class="title">Biscuit</div>
-                    <div class="slogan">"Playful and Affectionate"</div>
+            <div class="testimonial-content">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p class="testimonial-quote">"Adopting Max through PetFinder was the best decision we ever made. The process was seamless, and the support we received was incredible. He's brought so much joy to our family!"</p>
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
                 </div>
-                <div class="desc">
-                    “Bringing Biscuit home was life-changing—he's full of love, always ready for adventure, and has an incredible way of making every day brighter” - Melissa
-                </div>
+                <span class="testimonial-date">December 15, 2023</span>
             </div>
         </div>
-        <div class="box3 box">
-            <img class="image" src="./assets/jacob with bob.jpg" alt="bob the dog">
-            <div class="text">
-                <div class="box-head">
-                    <div class="title">Bob</div>
-                    <div class="slogan">"A Loving Companion"</div>
-                </div>
-                <div class="desc">
-                    “Since adopting Bob, my world has been filled with his quirky charm and unwavering companionship. - Jacob"
+
+        <div class="testimonial-card">
+            <div class="testimonial-header">
+                <img src="./assets/famWdog1.jpeg" alt="John and Luna" class="testimonial-image">
+                <div class="testimonial-info">
+                    <h3>John Martinez</h3>
+                    <span class="pet-name">with Luna</span>
                 </div>
             </div>
+            <div class="testimonial-content">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p class="testimonial-quote">"Luna has been the perfect addition to our family. The adoption process was straightforward and well-organized."</p>
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <span class="testimonial-date">January 3, 2024</span>
+            </div>
         </div>
-    </main>
+
+        <div class="testimonial-card">
+            <div class="testimonial-header">
+                <img src="./assets/dog10.jpg" alt="Emily and Whiskers" class="testimonial-image">
+                <div class="testimonial-info">
+                    <h3>Emily Chen</h3>
+                    <span class="pet-name">with Whiskers</span>
+                </div>
+            </div>
+            <div class="testimonial-content">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p class="testimonial-quote">"As a first-time pet owner, I appreciated how informative and helpful the entire process was. Whiskers is now my best friend!"</p>
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <span class="testimonial-date">January 15, 2024</span>
+            </div>
+        </div>
+    </div>
     <!-- Footer -->
     <footer>
         <div class="fcont">
