@@ -20,6 +20,7 @@ const upload = multer({ storage })
 
 // Import the necessary controller functions for the routes`
 const {
+    getLogout,
     createUser,
     getUsername,
     getPet,
@@ -34,6 +35,7 @@ const {
 } = require('../controller/pets');
 
 //routes to render pages
+router.route('/logout').get(getLogout)
 router.route('/login').get(getLogin).post(getUsername)
 router.route("/signup").post(createUser)
 router.route('/about').get(getAbout);
