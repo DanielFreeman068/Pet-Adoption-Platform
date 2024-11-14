@@ -607,7 +607,6 @@ textarea + textarea {
 
 
 /* FOOTER STYLING */
-
 footer {
     background-color: #2C3E50;
     color: #fff;
@@ -616,56 +615,57 @@ footer {
 }
 
 .fcont {
-    width: 80vw;
+    width: 90%;
+    max-width: 1200px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
-    padding: 0 2rem 2rem 2rem;
+    gap: 2rem;
+    padding: 0 1rem 2rem 1rem;
 }
 
 .fhead {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    align-items: center;
 }
 
 .fhead img {
-    width: 14vw;
+    width: 160px;
+    max-width: 80%;
     height: auto;
-    justify-content: center;
-    display: flex;
     margin: 0 auto;
 }
 
 .ftxt {
     color: #ccc;
     line-height: 1.6;
-    justify-content: center;
-    display: flex;
+    text-align: center;
+    font-size: 1rem;
 }
 
-.socials{
+.socials {
     justify-content: center;
 }
 
 .links h1, 
 .socials h1 {
-    font-size: 3vw;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
     color: #fff;
     text-align: center;
 }
 
 .socials a img {
-    height: 5vw;
-    width: 5vw;
+    height: 32px;
+    width: 32px;
 }
 
 .links h3 {
     margin: 0.5rem 0;
     font-weight: normal;
-    font-size: 1.8vw;
+    font-size: 1rem;
     text-align: center;
 }
 
@@ -684,6 +684,7 @@ footer {
     gap: 1.5rem;
     margin-top: 1rem;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .social-imgs a {
@@ -706,6 +707,52 @@ footer {
     background-color: #243342;
     color: #ccc;
     font-size: 0.9rem;
+}
+
+/* Media Queries for better mobile responsiveness */
+@media screen and (max-width: 768px) {
+    .fcont {
+        width: 95%;
+        gap: 1.5rem;
+        padding: 0 0.5rem 1.5rem 0.5rem;
+    }
+
+    .links h1, 
+    .socials h1 {
+        font-size: 1.25rem;
+    }
+
+    .links h3 {
+        font-size: 0.95rem;
+    }
+
+    .social-imgs {
+        gap: 1rem;
+    }
+
+    .foot {
+        font-size: 0.8rem;
+        padding: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    footer {
+        padding: 2rem 0 0 0;
+    }
+
+    .fcont {
+        grid-template-columns: 1fr;
+    }
+
+    .fhead img {
+        width: 140px;
+    }
+
+    .social-imgs img {
+        width: 20px;
+        height: 20px;
+    }
 }
 
 
