@@ -41,12 +41,15 @@ and, postcss.
 
 ## Usage
 
-#### Admin 
-```bash
-  localhost:5000/adminPets
-```
+## Admin Access
 
-#### Login page route code example
+To access the admin features, log in with the following credentials:
+
+- **Username**: `admin`
+- **Password**: `admin`
+
+> **Note:** For security, ensure these credentials are updated before deploying to a production environment.
+
 ```
 const getLogin = asyncWrapper(async (req, res) => {
     try {
