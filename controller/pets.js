@@ -21,7 +21,7 @@ const getLogout = asyncWrapper(async (req, res) => {
 const getLogin = asyncWrapper(async (req, res) => {
     try {
         if (req.cookies.loggedIn) {
-            res.redirect('/');
+            res.render('/');
         } else {
             res.status(200).render('login');
         }
@@ -78,7 +78,9 @@ const createUser = asyncWrapper(async (req, res) => {
 // Render the about page for authenticated users
 const getAbout = [requireAuth, asyncWrapper(async (req, res) => {
     try {
-        res.status(200).render('about');
+        username = req.cookies.username
+        const user = await User.findOne({ username })
+        res.status(200).render('about', { user });
     } catch (error) {
         res.status(400).render('404', { error });
     }
@@ -87,7 +89,9 @@ const getAbout = [requireAuth, asyncWrapper(async (req, res) => {
 // Render the FAQ page for authenticated users
 const getFAQS = [requireAuth, asyncWrapper(async (req, res) => {
     try {
-        res.status(200).render('FAQ');
+        username = req.cookies.username
+        const user = await User.findOne({ username })
+        res.status(200).render('FAQ', { user });
     } catch (error) {
         res.status(400).render('404', { error });
     }
@@ -96,7 +100,9 @@ const getFAQS = [requireAuth, asyncWrapper(async (req, res) => {
 // Render the testimonials page for authenticated users
 const getTestimonials = [requireAuth, asyncWrapper(async (req, res) => {
     try {
-        res.status(200).render('testimonials');
+        username = req.cookies.username
+        const user = await User.findOne({ username })
+        res.status(200).render('testimonials', { user });
     } catch (error) {
         res.status(400).render('404', { error });
     }
@@ -114,8 +120,15 @@ const getSuccess = [requireAuth, asyncWrapper(async (req, res) => {
 // Render the admin dashboard for pets, displaying all pet records
 const getAdminDashboardPets = [requireAuth, asyncWrapper(async (req, res) => {
     try {
-        const allPets = await Pet.find({});
-        res.status(200).render('adminPets', { allPets });
+        username = req.cookies.username
+        const user = await User.findOne({ username })
+        const { isAdmin } = user
+        if (isAdmin == true) {
+            const allPets = await Pet.find({});
+            res.status(200).render('adminPets', { allPets });
+        } else {
+            res.status(200).render('404', 'access denied');
+        }
     } catch (error) {
         res.status(400).render('404', { error });
     }
@@ -124,8 +137,15 @@ const getAdminDashboardPets = [requireAuth, asyncWrapper(async (req, res) => {
 // Render the admin dashboard for users, displaying all user records
 const getAdminDashboardUsers = [requireAuth, asyncWrapper(async (req, res) => {
     try {
-        const users = await User.find({});
-        res.status(200).render('adminUsers', { users });
+        username = req.cookies.username
+        const user = await User.findOne({ username })
+        const { isAdmin } = user
+        if (isAdmin == true) {
+            const users = await User.find({});
+            res.status(200).render('adminUsers', { users });
+        } else {
+            res.status(200).render('404', 'access denied');
+        }
     } catch (error) {
         res.status(400).render('404', { error });
     }
@@ -154,10 +174,13 @@ const getAllPets = [requireAuth, asyncWrapper(async (req, res) => {
                 return true;
             });
         }
+        username = req.cookies.username
+        const user = await User.findOne({ username })
         
         res.render('index', {
             allPets: pets,
-            query: req.query
+            query: req.query,
+            user
         });
     } catch (error) {
         console.error('Error:', error);

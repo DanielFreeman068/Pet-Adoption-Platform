@@ -268,24 +268,6 @@ textarea + textarea {
 }
 
 
-
-/* admin styling */
-.pet-links {
-    display: flex;
-    align-items: center;
-    gap: 0 0.5rem;
-}
-.delete-btn{
-    background: transparent;
-    font-size: 0.75rem;
-    border: transparent;
-    cursor: pointer;
-}
-.delete-btn {
-    color:red;
-}
-
-
 /* HAMBURGER NAVBAR STYLING */
 .logo{
     float:left;
@@ -734,6 +716,12 @@ main {
     padding: 1rem;
 }
 
+.pet-links {
+    display: flex;
+    align-items: center;
+    gap: 0 0.5rem;
+}
+
 header {
     margin-bottom: 1.5rem;
 }
@@ -777,12 +765,20 @@ header {
     border-radius: 0.5rem;
     overflow: hidden;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .pet-image {
+    max-width: 100%;
     width: 80%;
     height: 300px;
     object-fit: cover;
+    display: block;
+    border-radius: 15px;
+    margin-top:1rem;
 }
 
 .pet-info {
@@ -804,6 +800,7 @@ header {
     font-size: 1.125rem;
     font-weight: 600;
     color: #1f2937;
+    margin: 0 auto;
 }
 
 .pet-id {
