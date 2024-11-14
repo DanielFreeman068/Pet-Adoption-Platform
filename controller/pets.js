@@ -40,12 +40,12 @@ const getUsername = asyncWrapper(async (req, res) => {
         const passMatch = await bcrypt.compare(req.body.password, check.password);
         if (passMatch) {
             res.cookie("loggedIn", true, {
-                maxAge: 7 * 24 * 60 * 60 * 1000,
+                maxAge: 60 * 60 * 1000,
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production'
             });
             res.cookie("username", req.body.username, {
-                maxAge: 7 * 24 * 60 * 60 * 1000,
+                maxAge: 60 * 60 * 1000,
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production'
             });
