@@ -88,7 +88,8 @@ const storage = new CloudinaryStorage({
 })
 const upload = multer({ storage })
 ```
-
+## Wireframes
+https://www.figma.com/files/team/1431025309276526890/project/293720049/Team-project?fuid=1316205599622019766
 
 ## Contributing
 
