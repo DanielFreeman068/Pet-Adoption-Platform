@@ -39,8 +39,6 @@ and, postcss.
     4. Open URL: http://localhost:5500/ 
     5. Login or create account to get started
 
-## Usage
-
 ## Admin Access
 
 To access the admin features, log in with the following credentials:
@@ -49,6 +47,9 @@ To access the admin features, log in with the following credentials:
 - **Password**: `admin`
 
 > **Note:** For security, ensure these credentials are updated before deploying to a production environment.
+
+## Usage
+
 
 ```
 const getLogin = asyncWrapper(async (req, res) => {
