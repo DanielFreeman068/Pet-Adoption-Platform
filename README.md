@@ -39,14 +39,18 @@ and, postcss.
     4. Open URL: http://localhost:5500/ 
     5. Login or create account to get started
 
+## Admin Access
+
+To access the admin features, log in with the following credentials:
+
+- **Username**: `admin`
+- **Password**: `admin`
+
+> **Note:** For security, ensure these credentials are updated before deploying to a production environment.
+
 ## Usage
 
-#### Admin 
-```bash
-  localhost:5000/adminPets
-```
 
-#### Login page route code example
 ```
 const getLogin = asyncWrapper(async (req, res) => {
     try {
