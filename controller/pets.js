@@ -4,27 +4,24 @@ const User = require("../models/login");
 const bcrypt = require('bcrypt');
 
 // Authentication middleware to check if a user is logged in
-const requireAuth = (req, res, next) => {
-    if (!req.cookies.loggedIn) {
-        return res.redirect('/login');
-    }
-    next();
-};
+// const requireAuth = (req, res, next) => {
+//     if (!req.cookies.loggedIn) {
+//         return res.redirect('/login');
+//     }
+//     next();
+// };
 
 // Logout handler - clears the logged-in cookie and redirects to the login page
 const getLogout = asyncWrapper(async (req, res) => {
     res.clearCookie('loggedIn');
-    res.status(200).redirect('/login'); 
+    res.clearCookie('username');
+    res.status(200).redirect('/'); 
 });
 
 // Render the login page or redirect to the homepage if already logged in
 const getLogin = asyncWrapper(async (req, res) => {
     try {
-        if (req.cookies.loggedIn) {
-            res.render('/');
-        } else {
-            res.status(200).render('login');
-        }
+        res.status(200).render('login');
     } catch (error) {
         res.status(400).render('404', { error });
     }
@@ -42,12 +39,12 @@ const getUsername = asyncWrapper(async (req, res) => {
             res.cookie("loggedIn", true, {
                 maxAge: 60 * 60 * 1000,
                 httpOnly: true,
-                secure: process.env.NODE_ENV === 'production'
+                secure: process.env.NODE_ENV === 'production',
             });
             res.cookie("username", req.body.username, {
                 maxAge: 60 * 60 * 1000,
                 httpOnly: true,
-                secure: process.env.NODE_ENV === 'production'
+                secure: process.env.NODE_ENV === 'production',
             });
             res.redirect("/");
         } else {
@@ -76,18 +73,21 @@ const createUser = asyncWrapper(async (req, res) => {
 });
 
 // Render the about page for authenticated users
-const getAbout = [requireAuth, asyncWrapper(async (req, res) => {
+const getAbout = asyncWrapper(async (req, res) => {
     try {
+        let user = null;
         username = req.cookies.username
-        const user = await User.findOne({ username })
+        if (username) {
+            user = await User.findOne({ username }).catch(err => console.error(err));
+        }
         res.status(200).render('about', { user });
     } catch (error) {
         res.status(400).render('404', { error });
     }
-})];
+});
 
 // Render the FAQ page for authenticated users
-const getFAQS = [requireAuth, asyncWrapper(async (req, res) => {
+const getFAQS = asyncWrapper(async (req, res) => {
     try {
         username = req.cookies.username
         const user = await User.findOne({ username })
@@ -95,10 +95,10 @@ const getFAQS = [requireAuth, asyncWrapper(async (req, res) => {
     } catch (error) {
         res.status(400).render('404', { error });
     }
-})];
+});
 
 // Render the testimonials page for authenticated users
-const getTestimonials = [requireAuth, asyncWrapper(async (req, res) => {
+const getTestimonials = asyncWrapper(async (req, res) => {
     try {
         username = req.cookies.username
         const user = await User.findOne({ username })
@@ -106,19 +106,19 @@ const getTestimonials = [requireAuth, asyncWrapper(async (req, res) => {
     } catch (error) {
         res.status(400).render('404', { error });
     }
-})];
+});
 
 // Render the success page for authenticated users
-const getSuccess = [requireAuth, asyncWrapper(async (req, res) => {
+const getSuccess = asyncWrapper(async (req, res) => {
     try {
         res.status(200).render('success');
     } catch (error) {
         res.status(400).render('404', { error });
     }
-})];
+});
 
 // Render the admin dashboard for pets, displaying all pet records
-const getAdminDashboardPets = [requireAuth, asyncWrapper(async (req, res) => {
+const getAdminDashboardPets = asyncWrapper(async (req, res) => {
     try {
         username = req.cookies.username
         const user = await User.findOne({ username })
@@ -132,10 +132,10 @@ const getAdminDashboardPets = [requireAuth, asyncWrapper(async (req, res) => {
     } catch (error) {
         res.status(400).render('404', { error });
     }
-})];
+});
 
 // Render the admin dashboard for users, displaying all user records
-const getAdminDashboardUsers = [requireAuth, asyncWrapper(async (req, res) => {
+const getAdminDashboardUsers = asyncWrapper(async (req, res) => {
     try {
         username = req.cookies.username
         const user = await User.findOne({ username })
@@ -149,10 +149,10 @@ const getAdminDashboardUsers = [requireAuth, asyncWrapper(async (req, res) => {
     } catch (error) {
         res.status(400).render('404', { error });
     }
-})];
+});
 
 // Display all pets with optional filtering based on query parameters
-const getAllPets = [requireAuth, asyncWrapper(async (req, res) => {
+const getAllPets = asyncWrapper(async (req, res) => {
     try {
         let pets = await Pet.find({});
         const { state, city, breed, ageRange } = req.query;
@@ -186,10 +186,10 @@ const getAllPets = [requireAuth, asyncWrapper(async (req, res) => {
         console.error('Error:', error);
         res.status(500).send('Server error');
     }
-})];
+});
 
 // Render a single pet profile based on the pet ID
-const getPet = [requireAuth, asyncWrapper(async (req, res) => {
+const getPet = asyncWrapper(async (req, res) => {
     try {
         const pet = await Pet.findById(req.params.id);
         if (!pet) {
@@ -199,13 +199,13 @@ const getPet = [requireAuth, asyncWrapper(async (req, res) => {
     } catch (error) {
         res.status(400).render('404', { error });
     }
-})];
+});
 
 // Fetch all users and return them as JSON (for authenticated users)
-const getAllUsers = [requireAuth, asyncWrapper(async (req, res) => {
+const getAllUsers = asyncWrapper(async (req, res) => {
     const users = await User.find({});
     res.status(200).json({ users });
-})];
+});
 
 module.exports = {
     getAbout,

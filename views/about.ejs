@@ -19,11 +19,18 @@
             <a href="/">Home</a>
             <a href="/testimonials">Testimonials</a>
             <a href="/about">About Us</a>
-            <a href="/#surrender">Surrender Pet</a>
-            <% if(user.isAdmin == true) { %>
+            <% if(user) { %>
+                <a href="/#surrender">Surrender Pet</a>
+            <% } %>
+            <% if(user && user.isAdmin == true) { %>
                 <a href="/adminPets">Admin</a>
             <% } %>
-            <a href="/logout">Logout</a>
+            <% if(user) { %>
+                <a href="/logout">Logout</a>
+            <% } %>
+            <% if(!user) { %>
+                <a href="/login">Login or Signup</a>
+            <% } %>
         </div>
     </div>
     <header class="header">

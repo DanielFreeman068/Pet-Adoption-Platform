@@ -19,11 +19,18 @@
             <a href="/">Home</a>
             <a href="/testimonials">Testimonials</a>
             <a href="/about">About Us</a>
-            <a href="javascript:void(0);" onclick="document.getElementById('surrender').scrollIntoView();">Surrender Pet</a>
-            <% if(user.isAdmin == true) { %>
+            <% if(user) { %>
+                <a href="javascript:void(0);" onclick="document.getElementById('surrender').scrollIntoView();">Surrender Pet</a>
+            <% } %>
+            <% if(user && user.isAdmin == true) { %>
                 <a href="/adminPets">Admin</a>
             <% } %>
-            <a href="/logout">Logout</a>
+            <% if(user) { %>
+                <a href="/logout">Logout</a>
+            <% } %>
+            <% if(!user) { %>
+                <a href="/login">Login or Signup</a>
+            <% } %>
         </div>
     </div>
     <header class="header">
@@ -115,6 +122,7 @@
         <% } %>
     </section>
     <!-- form -->
+    <% if(user) { %>
     <form id="surrender" action="/pets/create" class="pet-form" method="POST" enctype="multipart/form-data">
         <h4>Surrender a Pet</h4>
         <div class="form-control">
@@ -194,6 +202,7 @@
             <button type="submit" class="btn submit-btn">Submit Pet</button>
         </div>
     </form>
+    <% } %>
     <footer>
         <div class="fcont">
             <div class="fhead">
