@@ -1146,7 +1146,7 @@ header {
 .faq-container {
     width: 90%;
     max-width: 720px;
-    background-color: var(--bluee);
+    background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     padding: 1rem;
